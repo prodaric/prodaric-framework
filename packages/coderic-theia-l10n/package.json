@@ -1,0 +1,25 @@
+{
+  "name": "@coderic/theia-l10n",
+  "version": "0.0.1",
+  "description": "Coderic IDE — Marca español como language pack para Theia",
+  "main": "lib/node/index.js",
+  "theiaExtensions": [
+    {
+      "backend": "lib/node/coderic-l10n-backend-module.js"
+    },
+    {
+      "frontendPreload": "lib/browser/coderic-l10n-preload-module.js"
+    }
+  ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf lib"
+  },
+  "dependencies": {
+    "@theia/core": "^1.50.0"
+  },
+  "devDependencies": {
+    "rimraf": "^5.0.0",
+    "typescript": "~5.4.0"
+  }
+}

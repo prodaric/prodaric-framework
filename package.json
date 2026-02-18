@@ -1,0 +1,24 @@
+{
+  "name": "coderic-console",
+  "private": true,
+  "description": "Coderic IDE — monorepo",
+  "engines": {
+    "node": ">=18",
+    "npm": ">=8"
+  },
+  "workspaces": [
+    "packages/*",
+    "packages/plugins/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "clean": "npm run clean --workspaces --if-present",
+    "ide": "npm run start:dev -w @coderic/browser-app",
+    "ide:start": "npm run start -w @coderic/browser-app",
+    "ide:build": "npm run rebuild -w @coderic/browser-app && npm run build -w @coderic/browser-app"
+  },
+  "devDependencies": {
+    "lerna": "2.4.0"
+  }
+}

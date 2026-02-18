@@ -1,0 +1,16 @@
+{
+  "name": "@coderic/shell",
+  "version": "0.0.1",
+  "description": "Coderic IDE — Eclipse Theia shell",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf lib"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "rimraf": "^5.0.0",
+    "typescript": "~5.4.0"
+  }
+}

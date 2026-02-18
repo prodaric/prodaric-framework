@@ -1,0 +1,18 @@
+{
+  "name": "@coderic/plugin-cloud",
+  "version": "0.0.1",
+  "description": "Coderic IDE — plugin Coderic .cloud",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf lib"
+  },
+  "dependencies": {
+    "@coderic/shell": "0.0.1"
+  },
+  "devDependencies": {
+    "rimraf": "^5.0.0",
+    "typescript": "~5.4.0"
+  }
+}
