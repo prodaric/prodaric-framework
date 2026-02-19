@@ -28,10 +28,10 @@ Lista de tareas para que un agente (o desarrollador) pueda ver y marcar progreso
 
 ### Shell y Theia
 - [x] **A1** Integrar Eclipse Theia en shell (customización mínima) — `shell` — Alta — hecho
-- [ ] **A2** Definir tokens y contenedor InversifyJS en shell — `shell` — Alta — pendiente
+- [x] **A2** Definir tokens y contenedor InversifyJS en shell — `shell` — Alta — hecho
 
 ### Layout
-- [ ] **A3** Integración Lumino: widgets base y docking — `layout` — Alta — pendiente
+- [x] **A3** Integración Lumino: widgets base y docking — `layout` — Alta — hecho
 - [ ] **A4** Registro de widgets (registry) y paneles predefinidos — `layout` — Media — pendiente
 
 ### UI y formularios
