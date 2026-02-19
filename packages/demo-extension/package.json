@@ -1,0 +1,25 @@
+{
+  "name": "@prodaric/demo-extension",
+  "version": "0.0.1",
+  "description": "Prodaric Framework — extensión de demostración (menús y ejemplos de uso)",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "theiaExtensions": [
+    {
+      "frontend": "lib/browser/demo-extension-frontend-module.js"
+    }
+  ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf lib"
+  },
+  "dependencies": {
+    "@theia/core": "^1.50.0",
+    "@prodaric/shell": "0.0.1",
+    "@prodaric/layout": "0.0.1"
+  },
+  "devDependencies": {
+    "rimraf": "^5.0.0",
+    "typescript": "~5.4.0"
+  }
+}

@@ -26,7 +26,8 @@
     "@theia/terminal": "^1.50.0",
     "@theia/workspace": "^1.50.0",
     "@prodaric/shell": "0.0.1",
-    "@prodaric/theia-l10n-es": "0.0.1"
+    "@prodaric/theia-l10n-es": "0.0.1",
+    "@prodaric/demo-extension": "0.0.1"
   },
   "devDependencies": {
     "@theia/cli": "^1.50.0"
