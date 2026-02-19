@@ -1,12 +1,31 @@
 /**
- * Widget de ejemplo: reporte tipo BIRT.
- * Vista previa en tabla y descarga real del reporte como PDF.
+ * Widget de ejemplo: reportes BIRT (report on demand).
+ * Demos de todos los reportes: Productos, Resumen, Ventas. Cada uno con Descargar PDF.
  */
 
 import { Widget } from '@lumino/widgets';
 import { UUID } from '@lumino/coreutils';
-import { jsPDF } from 'jspdf';
-import autoTable from 'jspdf-autotable';
+
+const REPORT_ON_DEMAND_BASE = 'http://127.0.0.1:8082/generate';
+
+/** Reportes de demo disponibles (nombre = fichero en report-templates sin .rptdesign). */
+const REPORT_DEMOS = [
+  {
+    id: 'productos',
+    title: 'Productos',
+    description: 'Listado de productos con unidades, precio y total. Vista previa en tabla.',
+  },
+  {
+    id: 'resumen',
+    title: 'Resumen ejecutivo',
+    description: 'Reporte de resumen. Demo BIRT.',
+  },
+  {
+    id: 'ventas',
+    title: 'Ventas',
+    description: 'Reporte de ventas. Demo BIRT.',
+  },
+] as const;
 
 const SAMPLE_DATA = [
   { id: 1, producto: 'Producto A', unidades: 120, precioUnit: '10,00 €', total: '1.200,00 €' },
@@ -24,33 +43,52 @@ const TOTAL_IMPORTE = SAMPLE_DATA.reduce((s, r) => {
   const n = parseFloat(r.total.replace(/\./g, '').replace(',', '.').replace(/[^\d.]/g, ''));
   return s + (Number.isFinite(n) ? n : 0);
 }, 0);
-const TOTAL_IMPORTE_STR = TOTAL_IMPORTE.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+const TOTAL_IMPORTE_STR =
+  TOTAL_IMPORTE.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
 
-/** Genera y descarga el reporte como PDF (ejemplo tipo BIRT). */
-function downloadReportPdf(): void {
-  const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
-  doc.setFontSize(14);
-  doc.text('Reporte de productos (ejemplo BIRT)', 14, 18);
-  doc.setFontSize(10);
-  doc.text(`Prodaric Framework · ${new Date().toLocaleDateString('es-ES')}`, 14, 24);
+async function downloadReportPdf(reportId: string, statusEl: HTMLElement): Promise<void> {
+  statusEl.textContent = 'Generando PDF…';
+  statusEl.className = 'prodaric-demo-report-status';
+  const url = `${REPORT_ON_DEMAND_BASE}?name=${encodeURIComponent(reportId)}`;
+  try {
+    const res = await fetch(url);
+    if (!res.ok) {
+      const text = await res.text();
+      throw new Error(text || `HTTP ${res.status}`);
+    }
+    const blob = await res.blob();
+    const blobUrl = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = blobUrl;
+    a.download = `reporte-${reportId}.pdf`;
+    a.click();
+    URL.revokeObjectURL(blobUrl);
+    statusEl.textContent = 'PDF descargado.';
+    statusEl.className = 'prodaric-demo-report-status success';
+  } catch (e) {
+    statusEl.textContent =
+      'Servidor no disponible. Ejecute: npm run report-on-demand (y antes: ./scripts/report-server.sh ensure)';
+    statusEl.className = 'prodaric-demo-report-status error';
+  }
+}
 
-  autoTable(doc, {
-    startY: 28,
-    head: [['ID', 'Producto', 'Unidades', 'Precio unit.', 'Total']],
-    body: SAMPLE_DATA.map((r) => [
-      String(r.id),
-      r.producto,
-      r.unidades.toLocaleString('es-ES'),
-      r.precioUnit,
-      r.total,
-    ]),
-    foot: [['', 'Total', TOTAL_UNIDADES.toLocaleString('es-ES'), '—', TOTAL_IMPORTE_STR]],
-    theme: 'grid',
-    headStyles: { fillColor: [241, 245, 249] },
-    footStyles: { fillColor: [226, 232, 240], fontStyle: 'bold' },
-  });
-
-  doc.save('reporte-productos.pdf');
+function buildDemoCard(
+  demo: (typeof REPORT_DEMOS)[number],
+  statusEl: HTMLElement
+): HTMLElement {
+  const card = document.createElement('div');
+  card.className = 'prodaric-demo-report-card';
+  card.innerHTML = `
+    <div class="prodaric-demo-report-card-header">${demo.title}</div>
+    <p class="prodaric-demo-report-card-desc">${demo.description}</p>
+    <button type="button" class="prodaric-demo-report-card-btn">Descargar PDF</button>
+  `;
+  const btn = card.querySelector('button');
+  if (btn) {
+    btn.addEventListener('click', () => void downloadReportPdf(demo.id, statusEl));
+  }
+  card.appendChild(statusEl);
+  return card;
 }
 
 export function createReportDemoWidget(): Widget {
@@ -65,18 +103,34 @@ export function createReportDemoWidget(): Widget {
 
   const header = document.createElement('div');
   header.className = 'prodaric-demo-report-header';
-  header.innerHTML = '<h2>Reporte tipo BIRT</h2><p>Vista previa del reporte y descarga en PDF. Ejemplo de lo que puedes construir con BIRT / Business Intelligence.</p>';
+  header.innerHTML = `
+    <h2>Reportes BIRT (on demand)</h2>
+    <p>Demos de reportes: cada uno se genera bajo demanda (un proceso por petición). Elige un reporte y descarga el PDF.</p>
+  `;
 
-  const toolbar = document.createElement('div');
-  toolbar.className = 'prodaric-demo-report-toolbar';
-  const exportBtn = document.createElement('button');
-  exportBtn.type = 'button';
-  exportBtn.textContent = 'Descargar PDF';
-  exportBtn.addEventListener('click', () => {
-    downloadReportPdf();
-  });
-  toolbar.appendChild(exportBtn);
+  const demosSection = document.createElement('div');
+  demosSection.className = 'prodaric-demo-report-demos';
+  const demosTitle = document.createElement('h3');
+  demosTitle.className = 'prodaric-demo-report-demos-title';
+  demosTitle.textContent = 'Demos disponibles';
+  demosSection.appendChild(demosTitle);
 
+  const cardsWrap = document.createElement('div');
+  cardsWrap.className = 'prodaric-demo-report-cards';
+  for (const demo of REPORT_DEMOS) {
+    const statusEl = document.createElement('div');
+    statusEl.className = 'prodaric-demo-report-status';
+    statusEl.setAttribute('aria-live', 'polite');
+    cardsWrap.appendChild(buildDemoCard(demo, statusEl));
+  }
+  demosSection.appendChild(cardsWrap);
+
+  const previewSection = document.createElement('div');
+  previewSection.className = 'prodaric-demo-report-preview';
+  const previewTitle = document.createElement('h3');
+  previewTitle.className = 'prodaric-demo-report-preview-title';
+  previewTitle.textContent = 'Vista previa (Productos)';
+  previewSection.appendChild(previewTitle);
   const tableWrap = document.createElement('div');
   tableWrap.className = 'prodaric-demo-report-table-wrap';
   const table = document.createElement('table');
@@ -93,7 +147,8 @@ export function createReportDemoWidget(): Widget {
       </tr>
     </thead>
     <tbody>
-      ${SAMPLE_DATA.map((r, i) => `
+      ${SAMPLE_DATA.map(
+        (r, i) => `
         <tr class="${i % 2 === 1 ? 'prodaric-demo-report-row-alt' : ''}">
           <td>${r.id}</td>
           <td>${r.producto}</td>
@@ -101,7 +156,8 @@ export function createReportDemoWidget(): Widget {
           <td class="prodaric-demo-report-num">${r.precioUnit}</td>
           <td class="prodaric-demo-report-num">${r.total}</td>
         </tr>
-      `).join('')}
+      `
+      ).join('')}
     </tbody>
     <tfoot>
       <tr class="prodaric-demo-report-footer">
@@ -113,15 +169,24 @@ export function createReportDemoWidget(): Widget {
     </tfoot>
   `;
   tableWrap.appendChild(table);
+  previewSection.appendChild(tableWrap);
 
   const styles = document.createElement('style');
   styles.textContent = `
     .prodaric-demo-report-root { padding: 1rem; font-family: inherit; }
     .prodaric-demo-report-header h2 { margin: 0 0 0.5rem 0; font-size: 1.25rem; }
     .prodaric-demo-report-header p { margin: 0 0 1rem 0; color: var(--prodaric-text-muted, #64748b); font-size: 0.875rem; }
-    .prodaric-demo-report-toolbar { margin-bottom: 1rem; }
-    .prodaric-demo-report-toolbar button { padding: 0.5rem 1rem; cursor: pointer; border-radius: 6px; border: 1px solid var(--prodaric-border, #e2e8f0); background: var(--prodaric-bg-elevated, #f8fafc); }
-    .prodaric-demo-report-toolbar button:hover { background: var(--prodaric-bg-hover, #e2e8f0); }
+    .prodaric-demo-report-demos-title { margin: 0 0 0.75rem 0; font-size: 1rem; }
+    .prodaric-demo-report-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+    .prodaric-demo-report-card { border: 1px solid var(--prodaric-border, #e2e8f0); border-radius: 8px; padding: 1rem; background: var(--prodaric-bg-elevated, #f8fafc); }
+    .prodaric-demo-report-card-header { font-weight: 600; margin-bottom: 0.5rem; }
+    .prodaric-demo-report-card-desc { margin: 0 0 0.75rem 0; font-size: 0.875rem; color: var(--prodaric-text-muted, #64748b); line-height: 1.4; }
+    .prodaric-demo-report-card-btn { padding: 0.5rem 1rem; cursor: pointer; border-radius: 6px; border: 1px solid var(--prodaric-border, #e2e8f0); background: var(--prodaric-surface, #f1f5f9); font-size: 0.875rem; }
+    .prodaric-demo-report-card-btn:hover { background: var(--prodaric-bg-hover, #e2e8f0); }
+    .prodaric-demo-report-status { font-size: 0.8125rem; color: var(--prodaric-text-muted, #64748b); margin-top: 0.5rem; min-height: 1.25rem; }
+    .prodaric-demo-report-status.success { color: var(--prodaric-success, #15803d); }
+    .prodaric-demo-report-status.error { color: var(--prodaric-error, #b91c1c); }
+    .prodaric-demo-report-preview-title { margin: 0 0 0.5rem 0; font-size: 1rem; }
     .prodaric-demo-report-table-wrap { overflow: auto; border: 1px solid var(--prodaric-border, #e2e8f0); border-radius: 8px; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
     .prodaric-demo-report table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
     .prodaric-demo-report th, .prodaric-demo-report td { padding: 0.625rem 0.875rem; text-align: left; border-bottom: 1px solid var(--prodaric-border, #e2e8f0); }
@@ -134,8 +199,8 @@ export function createReportDemoWidget(): Widget {
   `;
   root.appendChild(styles);
   root.appendChild(header);
-  root.appendChild(toolbar);
-  root.appendChild(tableWrap);
+  root.appendChild(demosSection);
+  root.appendChild(previewSection);
   w.node.appendChild(root);
   return w;
 }

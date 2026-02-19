@@ -24,6 +24,7 @@ config/       tsconfig.base, jest, eslint
 
 - **Documento de arquitectura (fuente de verdad):** [docs/ARQUITECTURA.md](./docs/ARQUITECTURA.md).  
 - **TODO list para estimar** construcción o refactorización: [ARQUITECTURA-TODO.md](./ARQUITECTURA-TODO.md) (prioridad, estimación en h/días, estado por ítem).
+- **Reportes BIRT (on demand):** [docs/REPORTES-SERVIDOR.md](./docs/REPORTES-SERVIDOR.md) — PDF bajo demanda (un proceso por petición). `./scripts/report-server.sh ensure` y `npm run report-on-demand`; en el IDE, Prodaric → Reportes → Descargar PDF.
 
 ## Ver el IDE (editor tipo VS Code / Theia en localhost)
 
@@ -34,6 +35,8 @@ npm install
 npm run ide
 ```
 
+O en un solo paso (install + build + opcional start): `./scripts/run.sh` (solo build) o `./scripts/run.sh --start` (arranca el IDE).
+
 Abre **http://localhost:3000** en el navegador. Verás el IDE completo: explorador de archivos, editor de código (Monaco), terminal, búsqueda, preferencias, etc.
 
 ### Dónde están los ejemplos (Dashboard, Todo list, Reportes, etc.)
@@ -42,7 +45,7 @@ En la **barra de menú superior** del IDE (arriba de todo) verás la entrada **�
 
 - **Dashboard (ejemplo)** — panel con tarjetas de resumen  
 - **Todo list (ejemplo)** — lista de tareas (añadir, completar, eliminar)  
-- **Reportes (ejemplo)** — tabla y exportar PDF simulado  
+- **Reportes (ejemplo)** — demos BIRT (Productos, Resumen, Ventas); Descargar PDF on demand  
 - **Formularios (ejemplo)** — formulario con varios tipos de campo  
 - **CRUD (ejemplo)** — listado con añadir y eliminar  
 - **Gráficos (ejemplo)** — gráfico de barras/líneas (ECharts)  

@@ -1,0 +1,77 @@
+# Empaqueta Prodaric Framework con Electron al publicar un release.
+# Repo: https://github.com/prodaric/prodaric-framework
+# Dispara: al crear/publicar un release (tag v*) o manualmente.
+
+name: Release — Electron packages
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            name: linux
+          - os: windows-latest
+            name: windows
+          - os: macos-latest
+            name: macos
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies (Linux native)
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libx11-dev libxkbfile-dev libsecret-1-dev
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Build monorepo
+        run: npm run build
+
+      - name: Package Electron (Prodaric Framework)
+        run: npm run package:electron -w @prodaric/browser-app
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ELECTRON_VERSION: "28"
+
+      - name: Upload artifacts (Linux)
+        if: matrix.os == 'ubuntu-latest'
+        uses: actions/upload-artifact@v4
+        with:
+          name: prodaric-framework-linux
+          path: apps/browser-app/dist/
+
+      - name: Upload artifacts (Windows)
+        if: matrix.os == 'windows-latest'
+        uses: actions/upload-artifact@v4
+        with:
+          name: prodaric-framework-windows
+          path: apps/browser-app/dist/
+
+      - name: Upload artifacts (macOS)
+        if: matrix.os == 'macos-latest'
+        uses: actions/upload-artifact@v4
+        with:
+          name: prodaric-framework-macos
+          path: apps/browser-app/dist/

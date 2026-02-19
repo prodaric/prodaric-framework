@@ -4,3 +4,5 @@ dist
 *.tsbuildinfo
 .npm
 .DS_Store
+.report-server
+.birt-server

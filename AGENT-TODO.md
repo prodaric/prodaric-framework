@@ -16,7 +16,7 @@ Orden sugerido para ir cerrando pendientes. Al terminar una, márcala `[x]` y pa
 | 3 | A13  | Persistencia layout (backend o localStorage) | `shell` | Media |
 | 4 | I3.1–I3.6 | Electron + instaladores (Windows, Linux, Fedora) | `apps/browser-app` | Alta |
 | 5 | E1   | Integrar Apache ECharts (gráficos) | `ui-engine` o `@prodaric/charts` | — |
-| 6 | E2–E5 | BIRT, NestJS/Drizzle, Sparkplug, Theia AI | varios | — |
+| 6 | E3–E5 | NestJS/Drizzle, Sparkplug, Theia AI | varios | — |
 
 **Referencia de estimación y arquitectura:** [ARQUITECTURA-TODO.md](./ARQUITECTURA-TODO.md).
 
@@ -74,7 +74,7 @@ Orden sugerido para ir cerrando pendientes. Al terminar una, márcala `[x]` y pa
 ## Tareas — Nuevas tecnologías del stack
 
 - [ ] **E1** Integrar Apache ECharts (gráficos en paneles) — `ui-engine` o nuevo `@prodaric/charts` — pendiente
-- [ ] **E2** Integrar BIRT (reportes) — módulo o plugin — pendiente
+- [x] **E2** Integrar BIRT (reportes) — report on demand, demos (productos, resumen, ventas), report-templates — hecho
 - [ ] **E3** Backend NestJS + Drizzle ORM (si aplica) — servicio/API — pendiente
 - [ ] **E4** Soporte Sparkplug (MQTT industrial) — módulo — pendiente
 - [ ] **E5** Theia AI + Claude (asistente en el IDE) — extensión Theia — pendiente
@@ -102,7 +102,7 @@ Objetivo: que el framework sea instalable como aplicación de escritorio y en la
 - [x] **I1.1** Build documentado: requisitos (Node ≥18, npm ≥8), comandos `npm ci` y `npm run build` — raíz — Alta — hecho
 - [x] **I1.2** Un comando de arranque desde raíz (`npm start`) que sirva backend + frontend — raíz — Alta — hecho
 - [x] **I1.3** README: "Cómo ejecutar localmente" (puerto, URL) — raíz / README — Media — hecho
-- [ ] **I1.4** Opcional: script `scripts/run.sh` para desarrollo/CI — raíz — Baja — pendiente
+- [x] **I1.4** Opcional: script `scripts/run.sh` para desarrollo/CI — raíz — Baja — hecho
 
 ### Fase 2 — Instalable en la nube
 - [x] **I2.1** Dockerfile (raíz o apps/browser-app): `npm ci`, `npm run build`, `CMD npm start` — raíz — Alta — hecho

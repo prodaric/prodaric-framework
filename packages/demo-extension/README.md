@@ -8,7 +8,7 @@ Extensión de demostración del framework Prodaric. Añade el menú **Prodaric**
 |--------|-------------|
 | **Dashboard (ejemplo)** | Panel tipo dashboard con tarjetas de resumen (métricas, accesos rápidos) y sección de actividad. Muestra composición de vistas y uso del tema. |
 | **Todo list (ejemplo)** | Lista de tareas: añadir, marcar completado y eliminar. Ejemplo sencillo de estado e interacción en un panel. |
-| **Reportes (ejemplo)** | Vista previa de reporte: tabla de datos y botón "Exportar PDF (simulado)". Ejemplo de lo que permite el módulo de reportes (BIRT / Business Intelligence). |
+| **Reportes (ejemplo)** | Demos de reportes BIRT (on demand): Productos, Resumen, Ventas. Cada uno con botón "Descargar PDF"; vista previa de la tabla de productos. |
 | **Formularios (ejemplo)** | Formulario con campos típicos (texto, email, fecha, select, checkbox). Muestra el tipo de formularios que se pueden representar con LayoutSchema y el Form Engine. |
 | **CRUD (ejemplo)** | Listado con añadir y eliminar ítems (Lumino). Ejemplo de pantallas CRUD en paneles. |
 | **Gráficos (ejemplo)** | Gráfico interactivo (barras / líneas) con Apache ECharts. Ejemplo de visualización de datos en paneles. |

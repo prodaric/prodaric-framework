@@ -62,6 +62,7 @@ Este archivo es la **TODO list para estimar** tiempos de construcción o refacto
 | A12 | App IDE: ensamblar shell + layout + plugins | apps/ide | Alta | — h | pendiente | |
 | A13 | Persistencia layout (backend o localStorage, stateless) | shell | Media | — h | pendiente | |
 | A14 | Tests unitarios por paquete (Jest) | todos | Media | — h | hecho | layout; resto pendiente |
+| E2 | BIRT (reportes): report on demand, demos, report-templates | scripts + demo-extension | Alta | — h | hecho | ReportRunner one-shot, servidor Node 8082, 3 demos |
 
 ---
 

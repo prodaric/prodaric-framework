@@ -23,6 +23,10 @@ npm run start        # solo arrancar (si ya compilaste)
 
 Cuando el IDE esté abierto en **http://localhost:3000**, mira la **barra de menú de arriba** (donde suele estar Archivo, Edición, etc.). Ahí aparece **Prodaric**. Clic en **Prodaric** → se abre un menú con: Dashboard, Todo list, Reportes, Formularios, CRUD, Gráficos, Docking y Acerca del framework. Cada uno abre un panel de ejemplo en la zona central.
 
+## Empaquetar con Electron (escritorio)
+
+Desde la raíz: `npm run package:electron` o `npm run package:electron:dir`. En Linux (Fedora): `sudo dnf install libX11-devel libxkbfile-devel libsecret-devel`. Al publicar un release, el workflow `.github/workflows/release-electron.yml` genera artefactos para Linux, Windows y macOS.
+
 ## Nota
 
 La app en `apps/ide` (y su build Vite con un botón de prueba) es un punto de entrada mínimo para el API. El producto “Prodaric Framework” que se despliega en `*/console/` será esta aplicación Theia (`browser-app`).
