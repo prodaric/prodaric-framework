@@ -7,8 +7,7 @@
 
 ## 1. Resumen del Sistema
 
-Prodaric Framework es un **centro de control unificado** para gestionar el ecosistema Dicon (`.cloud`, `.net`, `.com`, `.dev`). Funciona como un **IDE profesional** que no requiere edición manual de código para la mayoría de sus funciones. Fork de Coderic IDE.
-
+Prodaric Framework es un **centro de control unificado** para gestionar el ecosistema Dicon (`.cloud`, `.net`, `.com`, `.dev`). Funciona como un **IDE profesional** que no requiere edición manual de código para la mayoría de sus funciones. 
 A diferencia de un panel administrativo tradicional, Prodaric Framework **orquesta flujos de trabajo e infraestructuras mediante metadatos**, adoptando el paradigma *Low-Code Metadata-Driven Orchestrator*. El resultado es una **herramienta de ingeniería de escritorio** corriendo en el navegador.
 
 ---

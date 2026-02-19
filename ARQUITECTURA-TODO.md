@@ -1,6 +1,6 @@
 # Prodaric Framework — Arquitectura y TODO list de estimación
 
-**Fuente de verdad:** [docs/ARQUITECTURA.md](./docs/ARQUITECTURA.md) (derivado de *coderic-ide-arquitectura.xml*).  
+**Fuente de verdad:** [docs/ARQUITECTURA.md](./docs/ARQUITECTURA.md) (derivado de *prodaric-framework-arquitectura.xml*).  
 Este archivo es la **TODO list para estimar** tiempos de construcción o refactorización.
 
 ---
@@ -81,4 +81,4 @@ Este archivo es la **TODO list para estimar** tiempos de construcción o refacto
 
 ---
 
-*Arquitectura: [docs/ARQUITECTURA.md](./docs/ARQUITECTURA.md). Origen: coderic-ide-arquitectura.xml. Prodaric Framework · prodaric-framework.*
+*Arquitectura: [docs/ARQUITECTURA.md](./docs/ARQUITECTURA.md). Origen: prodaric-framework-arquitectura.xml. Prodaric Framework · prodaric-framework.*

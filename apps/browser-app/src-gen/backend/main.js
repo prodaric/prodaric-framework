@@ -70,7 +70,11 @@ globalThis.extensionInfo = [
         "version": "1.68.2"
     },
     {
-        "name": "@prodaric/theia-l10n",
+        "name": "@prodaric/shell",
+        "version": "0.0.1"
+    },
+    {
+        "name": "@prodaric/theia-l10n-es",
         "version": "0.0.1"
     }
 ];

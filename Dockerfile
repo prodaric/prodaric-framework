@@ -1,6 +1,6 @@
-# Coderic IDE — imagen para Podman/Docker (equivalente al flujo Pack)
-# Build: podman build -t coderic-ide .
-# Run:   podman run -p 3000:3000 coderic-ide
+# Prodaric Framework — imagen para Podman/Docker (equivalente al flujo Pack)
+# Build: podman build -t prodaric-framework .
+# Run:   podman run -p 3000:3000 prodaric-framework
 
 FROM node:20-bookworm-slim
 

@@ -1,7 +1,6 @@
 # Prodaric Framework
 
-Entorno de desarrollo integrado profesional basado en web. Centro de control unificado del ecosistema Dicon (`.cloud`, `.net`, `.com`, `.dev`). Fork de Coderic IDE.
-
+Entorno de desarrollo integrado profesional basado en web. Centro de control unificado del ecosistema Dicon (`.cloud`, `.net`, `.com`, `.dev`). 
 **Repositorio:** `prodaric-framework` · **Producto:** Prodaric Framework.
 
 ## Stack

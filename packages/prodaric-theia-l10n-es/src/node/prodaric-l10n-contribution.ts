@@ -9,7 +9,7 @@ import { injectable } from 'inversify';
 import type { LocalizationContribution, LocalizationRegistry } from '@theia/core/lib/node/i18n/localization-contribution';
 
 @injectable()
-export class CodericL10nContribution implements LocalizationContribution {
+export class ProdaricL10nContribution implements LocalizationContribution {
   async registerLocalizations(registry: LocalizationRegistry): Promise<void> {
     registry.registerLocalization({
       languageId: 'es',

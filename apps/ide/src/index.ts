@@ -1,5 +1,5 @@
 /**
- * @prodaric/ide — Prodaric Framework aplicación principal (fork Coderic IDE).
+ * @prodaric/ide — Prodaric Framework aplicación principal.
  */
 
 import { initApiForConsole } from "./api-test";

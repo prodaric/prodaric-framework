@@ -40,7 +40,7 @@ function load(container, jsModule) {
 async function preload(container) {
     try {
         await load(container, require('@theia/core/lib/browser/preload/preload-module'));
-        await load(container, require('@prodaric/theia-l10n/lib/browser/coderic-l10n-preload-module.js'));
+        await load(container, require('@prodaric/theia-l10n-es/lib/browser/prodaric-l10n-preload-module.js'));
         const { Preloader } = require('@theia/core/lib/browser/preload/preloader');
         const preloader = container.get(Preloader);
         await preloader.initialize();
@@ -96,6 +96,7 @@ module.exports = (async () => {
         await load(container, require('@theia/userstorage/lib/browser/user-storage-frontend-module'));
         await load(container, require('@theia/preferences/lib/browser/preference-frontend-module'));
         await load(container, require('@theia/terminal/lib/browser/terminal-frontend-module'));
+        await load(container, require('@prodaric/shell/lib/browser/prodaric-shell-frontend-module.js'));
         
         MonacoInit.init(container);
         ;
