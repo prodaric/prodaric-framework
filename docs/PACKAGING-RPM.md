@@ -20,6 +20,8 @@ Para **solo construir** el RPM basta con `rpm-build` y `rpm`. Las dependencias d
 
 El proyecto usa un **spec propio** (`apps/browser-app/rpm/prodaric.spec`) y un script que prepara el árbol de construcción y llama a **rpmbuild**. Rutas sin espacios; instalación en `/opt/prodaric`.
 
+**Comando único (desde la raíz del monorepo):** `npm run package:electron:rpm` — hace rebuild Electron, build de producción, `electron-builder --dir` y `build-rpm.sh`. Requiere que la versión de Electron en `package.json` coincida con la que exige `@theia/electron` (p. ej. 38.4.0) para evitar el error "Updated dependencies, please run install again".
+
 1. Generar el directorio desempaquetado (Electron):
    ```bash
    cd apps/browser-app
@@ -48,6 +50,22 @@ El proyecto usa un **spec propio** (`apps/browser-app/rpm/prodaric.spec`) y un s
    ```bash
    sudo dnf install --nogpgcheck prodaric-0.0.1-1.fc43.x86_64.rpm
    ```
+
+## Verificación tras la instalación (testing)
+
+Tras instalar el RPM, comprobar que la aplicación abre la **ventana** del IDE (no solo el backend en segundo plano):
+
+1. **Desde terminal:**
+   ```bash
+   /opt/prodaric/prodaric
+   ```
+   Debe abrirse una ventana de Prodaric (Electron) con el IDE. Si solo aparecen logs en la terminal y no se abre ventana, el entry point no está usando el launcher correcto (`electron-main.js`).
+
+2. **Desde el lanzador:** Buscar "Prodaric" en el menú de aplicaciones y abrirlo. Debe abrir la misma ventana del IDE.
+
+3. **Comprobaciones rápidas:** En la ventana abierta, verificar que se ve la barra lateral, el explorador de archivos y que el idioma por defecto es español.
+
+Si el build se hizo con `theia.target: "electron"` y el script `theia-electron-main.js` carga `lib/backend/electron-main.js`, el RPM instalado incluirá el launcher correcto en `app.asar`. Tras cualquier cambio en target o entry point, es necesario **reconstruir el RPM** y reinstalar para que la ventana se abra correctamente.
 
 ## Estructura del spec
 

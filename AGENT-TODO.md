@@ -14,7 +14,7 @@ Orden sugerido para ir cerrando pendientes. Al terminar una, márcala `[x]` y pa
 | 1 | A7   | Widget Rete.js v2 envuelto en Lumino | `packages/node-canvas` | hecho |
 | 2 | A12  | App IDE: ensamblar shell + layout + plugins | `apps/ide` | Alta |
 | 3 | A13  | Persistencia layout (backend o localStorage) | `shell` | Media |
-| 4 | I3.1–I3.6 | Electron + instaladores (Windows, Linux, Fedora) | `apps/browser-app` | Alta |
+| 4 | I3.4 | Instalador Windows (NSIS); resto Electron/RPM hecho | `apps/browser-app` | Alta |
 | 5 | E1   | Integrar Apache ECharts (gráficos) | `ui-engine` o `@prodaric/charts` | — |
 | 6 | E3–E5 | NestJS/Drizzle, Sparkplug, Theia AI | varios | — |
 
@@ -112,12 +112,12 @@ Objetivo: que el framework sea instalable como aplicación de escritorio y en la
 - [ ] **I2.5** Opcional: ejemplo de despliegue en PaaS (Heroku, Cloud Run, etc.) — docs — Baja — pendiente
 
 ### Fase 3 — Instalable como aplicación de escritorio
-- [ ] **I3.1** Target Electron en browser-app: `@theia/electron`, config Theia `target: electron` — apps/browser-app — Alta — pendiente
-- [ ] **I3.2** Scripts de build para Electron (rebuild:electron, build producción) — apps/browser-app — Alta — pendiente
-- [ ] **I3.3** electron-builder: producto "Prodaric Framework", iconos — apps/browser-app — Alta — pendiente
+- [x] **I3.1** Target Electron en browser-app: `@theia/electron`, config Theia `target: electron` — apps/browser-app — Alta — hecho
+- [x] **I3.2** Scripts de build para Electron (rebuild:electron, build producción) — apps/browser-app — Alta — hecho
+- [x] **I3.3** electron-builder: producto "Prodaric Framework", iconos — apps/browser-app — Alta — hecho
 - [ ] **I3.4** Instalador Windows (NSIS, .exe) — apps/browser-app — Alta — pendiente
-- [ ] **I3.5** Artefacto Linux (AppImage, .deb, .rpm Fedora) — apps/browser-app — Alta — pendiente
-- [ ] **I3.6** Documentar: cómo generar instaladores por plataforma — docs / README — Media — pendiente
+- [x] **I3.5** Artefacto Linux (AppImage, .deb, .rpm Fedora) — apps/browser-app — Alta — hecho
+- [x] **I3.6** Documentar: cómo generar instaladores por plataforma — docs / README — Media — hecho
 
 ---
 

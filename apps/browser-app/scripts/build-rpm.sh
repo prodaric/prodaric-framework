@@ -39,6 +39,7 @@ cat > "$STAGING/$PACK_DIR/prodaric.desktop" << 'DESKTOP'
 Name=Prodaric
 Comment=Prodaric Framework — IDE tipo VS Code (Theia/Electron)
 Exec=/opt/prodaric/prodaric %U
+Path=/opt/prodaric
 Terminal=false
 Type=Application
 Icon=prodaric

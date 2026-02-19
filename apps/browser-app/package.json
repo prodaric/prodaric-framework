@@ -9,7 +9,7 @@
   "main": "scripts/theia-electron-main.js",
   "scripts": {
     "rebuild": "theia rebuild:browser",
-    "rebuild:electron": "npm install electron@28 --save-dev -w @prodaric/browser-app --ignore-scripts && theia rebuild:electron",
+    "rebuild:electron": "npm install electron@38.4.0 --save-dev -w @prodaric/browser-app --ignore-scripts && theia rebuild:electron",
     "build": "theia build --mode development",
     "build:prod": "theia build --mode production",
     "build:electron": "theia build --app-target=electron --mode development",
@@ -21,12 +21,15 @@
     "clean": "theia clean",
     "package:electron": "npm run rebuild:electron && npm run build:electron:prod && electron-builder --publish never",
     "package:electron:dir": "(chmod +x node_modules/7zip-bin/linux/x64/7za 2>/dev/null || true) && npm run rebuild:electron && npm run build:electron:prod && electron-builder --dir --publish never",
-    "package:electron:rpm": "(chmod +x node_modules/7zip-bin/linux/x64/7za 2>/dev/null || true) && npm run rebuild:electron && npm run build:electron:prod && electron-builder --dir --publish never && bash scripts/build-rpm.sh",
+    "package:electron:rpm": "(chmod +x node_modules/7zip-bin/linux/x64/7za 2>/dev/null || true) && npm run rebuild:electron && npm install && npm run build:electron:prod && electron-builder --dir --publish never && bash scripts/build-rpm.sh",
     "package:electron:tar": "(chmod +x node_modules/7zip-bin/linux/x64/7za 2>/dev/null || true) && npm run rebuild:electron && npm run build:electron:prod && electron-builder --linux tar.gz --publish never",
     "package:electron:rpm:spec": "npm run package:electron:dir && bash scripts/build-rpm.sh",
     "package:electron:linux": "npm run package:electron:dir && bash scripts/build-rpm.sh && electron-builder --linux deb appimage --publish never"
   },
   "dependencies": {
+    "@prodaric/hello-world-extension": "0.0.1",
+    "@prodaric/shell": "0.0.1",
+    "@prodaric/theia-l10n-es": "0.0.1",
     "@theia/core": "^1.50.0",
     "@theia/editor": "^1.50.0",
     "@theia/electron": "^1.50.0",
@@ -39,19 +42,16 @@
     "@theia/preferences": "^1.50.0",
     "@theia/process": "^1.50.0",
     "@theia/terminal": "^1.50.0",
-    "@theia/workspace": "^1.50.0",
-    "@prodaric/shell": "0.0.1",
-    "@prodaric/theia-l10n-es": "0.0.1",
-    "@prodaric/hello-world-extension": "0.0.1"
+    "@theia/workspace": "^1.50.0"
   },
   "devDependencies": {
     "@theia/cli": "^1.50.0",
-    "electron": "28.3.3",
-    "electron-builder": "^24.0.0",
-    "7zip-bin": "~5.2.0"
+    "7zip-bin": "~5.2.0",
+    "electron": "^38.4.0",
+    "electron-builder": "^24.0.0"
   },
   "theia": {
-    "target": "browser",
+    "target": "electron",
     "frontend": {
       "config": {
         "defaultLocale": "es",
@@ -70,16 +70,41 @@
     }
   },
   "build": {
-    "electronVersion": "28.3.3",
+    "electronVersion": "38.4.0",
     "npmRebuild": false,
     "appId": "org.prodaric.framework",
     "productName": "Prodaric",
     "copyright": "Copyright © 2004-2025 Coderic",
-    "directories": { "output": "dist" },
-    "files": ["lib", "src-gen", "scripts", "resources"],
-    "extraMetadata": { "main": "scripts/theia-electron-main.js" },
-    "win": { "target": ["nsis"] },
-    "linux": { "target": ["AppImage", "deb", "rpm"], "executableName": "prodaric", "icon": "build/icons", "category": "Productivity", "vendor": "Coderic", "maintainer": "Neftali Yagua <despacho@neftaliyagua.com>", "artifactName": "Prodaric-${version}.${arch}.${ext}" },
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "lib",
+      "src-gen",
+      "scripts",
+      "resources"
+    ],
+    "extraMetadata": {
+      "main": "scripts/theia-electron-main.js"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb",
+        "rpm"
+      ],
+      "executableName": "prodaric",
+      "icon": "build/icons",
+      "category": "Productivity",
+      "vendor": "Coderic",
+      "maintainer": "Neftali Yagua <despacho@neftaliyagua.com>",
+      "artifactName": "Prodaric-${version}.${arch}.${ext}"
+    },
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
