@@ -23,9 +23,13 @@
     "report-server:stop": "./scripts/report-server.sh stop",
     "report-on-demand": "node scripts/report-on-demand-server.js",
     "package:electron": "npm run package:electron -w @prodaric/browser-app",
-    "package:electron:dir": "npm run package:electron:dir -w @prodaric/browser-app"
+    "package:electron:dir": "npm run package:electron:dir -w @prodaric/browser-app",
+    "package:electron:rpm": "npm run package:electron:rpm -w @prodaric/browser-app",
+    "package:electron:rpm:install": "npm run package:electron:rpm -w @prodaric/browser-app && (RPM=$(ls apps/browser-app/rpmbuild/RPMS/x86_64/*.rpm 2>/dev/null | head -1); [ -n \"$RPM\" ] && sudo dnf install -y --nogpgcheck \"$RPM\" || echo 'No se encontró .rpm en apps/browser-app/rpmbuild/RPMS/x86_64/')",
+    "package:electron:tar": "npm run package:electron:tar -w @prodaric/browser-app"
   },
   "devDependencies": {
+    "7zip-bin": "^5.2.0",
     "lerna": "2.4.0"
   }
 }

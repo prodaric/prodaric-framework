@@ -25,7 +25,9 @@ Cuando el IDE esté abierto en **http://localhost:3000**, mira la **barra de men
 
 ## Empaquetar con Electron (escritorio)
 
-Desde la raíz: `npm run package:electron` o `npm run package:electron:dir`. En Linux (Fedora): `sudo dnf install libX11-devel libxkbfile-devel libsecret-devel`. Al publicar un release, el workflow `.github/workflows/release-electron.yml` genera artefactos para Linux, Windows y macOS.
+Desde la raíz: `npm run package:electron` o `npm run package:electron:dir`. En Linux (Fedora): `sudo dnf install libX11-devel libxkbfile-devel libsecret-devel libxcrypt-compat`. Al publicar un release, el workflow `.github/workflows/release-electron.yml` genera artefactos para Linux, Windows y macOS.
+
+**RPM en Fedora (recomendado):** Usa el spec propio y rpmbuild: `npm run package:electron:rpm:spec` (genera el RPM en `apps/browser-app/rpmbuild/RPMS/...`). Requiere `rpm-build` y `rpm`; ver [docs/PACKAGING-RPM.md](../../docs/PACKAGING-RPM.md) y opcionalmente `./scripts/setup-rpm-packages.sh` para preparar el equipo con dnf. **Alternativa:** `npm run package:electron:tar` genera `dist/Prodaric-0.0.1.x64.tar.gz`; descomprímelo y ejecuta `./prodaric` desde la carpeta extraída. O usa `npm run package:electron:dir` y ejecuta `./prodaric` en `apps/browser-app/dist/linux-unpacked/`.
 
 ## Nota
 

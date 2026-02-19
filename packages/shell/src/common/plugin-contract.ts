@@ -17,7 +17,7 @@ export interface CodericApp {
   readonly id: string;
 }
 
-export interface CodericPlugin {
+export interface ProdaricPlugin {
   id: 'cloud' | 'net' | 'com' | 'dev';
   activate(app: CodericApp): void;
   deactivate(): void;

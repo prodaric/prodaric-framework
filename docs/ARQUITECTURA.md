@@ -91,7 +91,7 @@ Monorepo npm workspaces; cada paquete bajo scope `@prodaric/`.
 
 ## 7. Contratos de Interfaz
 
-Definidos en código en `packages/shell/src/common/` (LayoutSchema, AclSchema, CodericPlugin). Ver tipos TypeScript en ese paquete. (CodericPlugin se mantiene por compatibilidad con Theia.)
+Definidos en código en `packages/shell/src/common/` (LayoutSchema, AclSchema, ProdaricPlugin). Ver tipos TypeScript en ese paquete. (ProdaricPlugin se mantiene por compatibilidad con Theia.)
 
 ---
 

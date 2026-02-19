@@ -3,21 +3,28 @@
   "name": "@prodaric/browser-app",
   "version": "0.0.1",
   "description": "Prodaric Framework — aplicación Theia para navegador y escritorio (Electron)",
+  "homepage": "https://coderic.org",
+  "author": "Coderic <coderic@coderic.com>",
+  "vendor": "Coderic",
   "main": "scripts/theia-electron-main.js",
   "scripts": {
     "rebuild": "theia rebuild:browser",
-    "rebuild:electron": "theia rebuild:electron",
+    "rebuild:electron": "npm install electron@28 --save-dev -w @prodaric/browser-app --ignore-scripts && theia rebuild:electron",
     "build": "theia build --mode development",
     "build:prod": "theia build --mode production",
     "build:electron": "theia build --app-target=electron --mode development",
-    "build:electron:prod": "theia build --app-target=electron --mode production",
+    "build:electron:prod": "NODE_OPTIONS='--max-old-space-size=8192' theia build --app-target=electron --mode production",
     "start": "theia start",
     "start:dev": "npm run rebuild && theia start",
     "start:electron": "electron scripts/theia-electron-main.js",
     "watch": "theia build --watch --mode development",
     "clean": "theia clean",
     "package:electron": "npm run rebuild:electron && npm run build:electron:prod && electron-builder --publish never",
-    "package:electron:dir": "npm run rebuild:electron && npm run build:electron:prod && electron-builder --dir --publish never"
+    "package:electron:dir": "(chmod +x node_modules/7zip-bin/linux/x64/7za 2>/dev/null || true) && npm run rebuild:electron && npm run build:electron:prod && electron-builder --dir --publish never",
+    "package:electron:rpm": "(chmod +x node_modules/7zip-bin/linux/x64/7za 2>/dev/null || true) && npm run rebuild:electron && npm run build:electron:prod && electron-builder --dir --publish never && bash scripts/build-rpm.sh",
+    "package:electron:tar": "(chmod +x node_modules/7zip-bin/linux/x64/7za 2>/dev/null || true) && npm run rebuild:electron && npm run build:electron:prod && electron-builder --linux tar.gz --publish never",
+    "package:electron:rpm:spec": "npm run package:electron:dir && bash scripts/build-rpm.sh",
+    "package:electron:linux": "npm run package:electron:dir && bash scripts/build-rpm.sh && electron-builder --linux deb appimage --publish never"
   },
   "dependencies": {
     "@theia/core": "^1.50.0",
@@ -35,12 +42,13 @@
     "@theia/workspace": "^1.50.0",
     "@prodaric/shell": "0.0.1",
     "@prodaric/theia-l10n-es": "0.0.1",
-    "@prodaric/demo-extension": "0.0.1"
+    "@prodaric/hello-world-extension": "0.0.1"
   },
   "devDependencies": {
     "@theia/cli": "^1.50.0",
-    "electron": "^28.0.0",
-    "electron-builder": "^24.0.0"
+    "electron": "28.3.3",
+    "electron-builder": "^24.0.0",
+    "7zip-bin": "~5.2.0"
   },
   "theia": {
     "target": "browser",
@@ -50,23 +58,32 @@
         "applicationName": "Prodaric Framework",
         "preferences": {
           "workbench.colorTheme": "light"
+        },
+        "electron": {
+          "splashScreenOptions": {
+            "content": "resources/prodaric-splash.png",
+            "width": 1280,
+            "height": 640
+          }
         }
       }
     }
   },
   "build": {
+    "electronVersion": "28.3.3",
+    "npmRebuild": false,
     "appId": "org.prodaric.framework",
-    "productName": "Prodaric Framework",
-    "copyright": "Copyright © 2004-2025 Coderic / Prodaric",
+    "productName": "Prodaric",
+    "copyright": "Copyright © 2004-2025 Coderic",
     "directories": { "output": "dist" },
-    "files": ["lib", "src-gen", "scripts"],
+    "files": ["lib", "src-gen", "scripts", "resources"],
     "extraMetadata": { "main": "scripts/theia-electron-main.js" },
     "win": { "target": ["nsis"] },
-    "linux": { "target": ["AppImage", "deb", "rpm"], "category": "Development" },
+    "linux": { "target": ["AppImage", "deb", "rpm"], "executableName": "prodaric", "icon": "build/icons", "category": "Productivity", "vendor": "Coderic", "maintainer": "Neftali Yagua <despacho@neftaliyagua.com>", "artifactName": "Prodaric-${version}.${arch}.${ext}" },
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
-      "artifactName": "ProdaricFramework-Setup.${ext}"
+      "artifactName": "Prodaric-Setup.${ext}"
     }
   }
 }

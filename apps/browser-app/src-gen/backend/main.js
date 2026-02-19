@@ -10,8 +10,24 @@ BackendApplicationConfigProvider.set({
 
 globalThis.extensionInfo = [
     {
+        "name": "@theia/electron",
+        "version": "1.68.2"
+    },
+    {
         "name": "@theia/core",
         "version": "1.68.2"
+    },
+    {
+        "name": "@prodaric/shell",
+        "version": "0.0.1"
+    },
+    {
+        "name": "@prodaric/hello-world-extension",
+        "version": "0.0.1"
+    },
+    {
+        "name": "@prodaric/theia-l10n-es",
+        "version": "0.0.1"
     },
     {
         "name": "@theia/variable-resolver",
@@ -68,18 +84,6 @@ globalThis.extensionInfo = [
     {
         "name": "@theia/terminal",
         "version": "1.68.2"
-    },
-    {
-        "name": "@prodaric/shell",
-        "version": "0.0.1"
-    },
-    {
-        "name": "@prodaric/theia-l10n-es",
-        "version": "0.0.1"
-    },
-    {
-        "name": "@prodaric/demo-extension",
-        "version": "0.0.1"
     }
 ];
 

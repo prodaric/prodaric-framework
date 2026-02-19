@@ -15,7 +15,7 @@ Entorno de desarrollo integrado profesional basado en web. Centro de control uni
 ## Monorepo
 
 ```
-packages/     shell, layout, ui-engine, node-canvas, demo-extension, plugins
+packages/     shell, layout, ui-engine, node-canvas, hello-world-extension, plugins
 apps/ide      aplicación Theia que ensambla todo
 config/       tsconfig.base, jest, eslint
 ```
@@ -53,6 +53,8 @@ En la **barra de menú superior** del IDE (arriba de todo) verás la entrada **�
 - **Acerca del framework** — resumen del stack  
 
 Cada opción abre un panel en el área central del IDE. Si no ves el menú «Prodaric», asegúrate de haber hecho `npm run build` y luego `npm run ide` (o `npm run ide:start`) desde la raíz del proyecto.
+
+**Uso en producción:** los ejemplos del menú Prodaric los aporta la extensión **Hello World** (`@prodaric/hello-world-extension`), pensada solo para demostración. Para un producto real, elimina esa dependencia de `apps/browser-app` y añade tus propias extensiones; ver [packages/hello-world-extension/README.md](packages/hello-world-extension/README.md).
 
 - **Solo iniciar** (si ya compilaste antes): `npm run ide:start`
 - **Recompilar y luego iniciar**: `npm run ide:build` y en otra terminal `npm run ide:start`
@@ -132,19 +134,20 @@ Se abre la ventana de Electron con el IDE.
 
 ### Generar instaladores
 
-Desde `apps/browser-app`:
+Desde la **raíz del monorepo** (`prodaric-framework/`):
 
 ```bash
-# Instalador Windows (NSIS, .exe) — ejecutar en Windows
-npm run package:electron
+# RPM para Fedora/RHEL (spec propio, pack de fuentes .tar.gz + rpmbuild)
+npm run package:electron:rpm
 ```
 
-Los artefactos quedan en `apps/browser-app/dist/`:
+El RPM se genera en **`apps/browser-app/rpmbuild/RPMS/x86_64/prodaric-<version>-1.fc43.x86_64.rpm`**. Instalación: `sudo dnf install --nogpgcheck ./apps/browser-app/rpmbuild/RPMS/x86_64/prodaric-*.rpm`. Para construir e instalar en un paso: `npm run package:electron:rpm:install`. Requisitos: `rpm-build`, `rpm`; ver [docs/PACKAGING-RPM.md](docs/PACKAGING-RPM.md).
 
-- **Windows:** `ProdaricFramework-Setup.exe` (instalador NSIS).
-- **Linux:** `Prodaric Framework-x.x.x.AppImage`, `.deb` (Debian/Ubuntu) y `.rpm` (Fedora/RHEL), según la plataforma donde ejecutes el comando. En Fedora puedes instalar el `.rpm` con `sudo dnf install ./Prodaric\ Framework-*.rpm` o `rpm -i`.
+Desde `apps/browser-app` (o con `-w @prodaric/browser-app` desde la raíz):
 
-Para generar solo el directorio empaquetado (sin instalador, útil para pruebas): `npm run package:electron:dir`.
+- **Windows (NSIS):** `npm run package:electron` — artefactos en `dist/`.
+- **Solo directorio desempaquetado (Linux):** `npm run package:electron:dir` — queda `dist/linux-unpacked/` (útil para pruebas o para alimentar el build RPM).
+- **Tarball Linux:** `npm run package:electron:tar` — genera `dist/Prodaric-*.tar.gz`.
 
 **Iconos (opcional):** puedes añadir `apps/browser-app/resources/icon.ico` (Windows) y recursos para Linux/macOS; si no existen, electron-builder usa iconos por defecto.
 

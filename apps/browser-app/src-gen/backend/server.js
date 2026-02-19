@@ -52,6 +52,7 @@ module.exports = async (port, host, argv) => {
         await load(require('@theia/core/lib/node/i18n/i18n-backend-module'));
         await load(require('@theia/core/lib/node/hosting/backend-hosting-module'));
         await load(require('@theia/core/lib/node/request/backend-request-module'));
+        await load(require('@prodaric/theia-l10n-es/lib/node/prodaric-l10n-backend-module.js'));
         await load(require('@theia/editor/lib/node/editor-backend-module'));
         await load(require('@theia/filesystem/lib/node/filesystem-backend-module'));
         await load(require('@theia/filesystem/lib/node/download/file-download-backend-module'));
@@ -64,7 +65,6 @@ module.exports = async (port, host, argv) => {
         await load(require('@theia/navigator/lib/node/navigator-backend-module'));
         await load(require('@theia/preferences/lib/node/preference-backend-module'));
         await load(require('@theia/terminal/lib/node/terminal-backend-module'));
-        await load(require('@prodaric/theia-l10n-es/lib/node/prodaric-l10n-backend-module.js'));
         return await start(port, host, argv);
     } catch (error) {
         if (typeof error !== 'number') {

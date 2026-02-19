@@ -1,6 +1,6 @@
 # Empaqueta Prodaric Framework con Electron al publicar un release.
-# Repo: https://github.com/prodaric/prodaric-framework
-# Dispara: al crear/publicar un release (tag v*) o manualmente.
+# Genera: Linux (.deb, .rpm con spec propio, AppImage), Windows (.exe NSIS), macOS.
+# Dispara: al crear/publicar un release o manualmente (workflow_dispatch).
 
 name: Release — Electron packages
 
@@ -37,11 +37,11 @@ jobs:
           node-version: "20"
           cache: npm
 
-      - name: Install dependencies (Linux native)
+      - name: Install dependencies (Linux native + rpm para .rpm)
         if: matrix.os == 'ubuntu-latest'
         run: |
           sudo apt-get update
-          sudo apt-get install -y libx11-dev libxkbfile-dev libsecret-1-dev
+          sudo apt-get install -y libx11-dev libxkbfile-dev libsecret-1-dev rpm
 
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
@@ -49,18 +49,38 @@ jobs:
       - name: Build monorepo
         run: npm run build
 
-      - name: Package Electron (Prodaric Framework)
+      - name: Prepare icon for Linux packages
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          mkdir -p apps/browser-app/build/icons
+          cp apps/browser-app/resources/prodaric-logo-256.png apps/browser-app/build/icons/256x256.png
+
+      - name: Package Electron — Linux (.deb, .rpm, AppImage)
+        if: matrix.os == 'ubuntu-latest'
+        run: npm run package:electron:linux -w @prodaric/browser-app
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Package Electron — Windows (.exe)
+        if: matrix.os == 'windows-latest'
         run: npm run package:electron -w @prodaric/browser-app
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ELECTRON_VERSION: "28"
+
+      - name: Package Electron — macOS
+        if: matrix.os == 'macos-latest'
+        run: npm run package:electron -w @prodaric/browser-app
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload artifacts (Linux)
         if: matrix.os == 'ubuntu-latest'
         uses: actions/upload-artifact@v4
         with:
           name: prodaric-framework-linux
-          path: apps/browser-app/dist/
+          path: |
+            apps/browser-app/dist
+            apps/browser-app/rpmbuild/RPMS
 
       - name: Upload artifacts (Windows)
         if: matrix.os == 'windows-latest'

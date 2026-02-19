@@ -1,5 +1,5 @@
 /**
- * Módulo frontend de la extensión de demostración Prodaric.
+ * Módulo frontend de la extensión Hello World Prodaric.
  * Registra contribuciones de menú y comandos en el contenedor Theia.
  */
 

@@ -6,3 +6,6 @@ dist
 .DS_Store
 .report-server
 .birt-server
+rpmbuild
+apps/browser-app/build
+apps/browser-app/.browser_modules

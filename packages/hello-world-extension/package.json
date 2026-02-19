@@ -1,12 +1,12 @@
 {
-  "name": "@prodaric/demo-extension",
+  "name": "@prodaric/hello-world-extension",
   "version": "0.0.1",
-  "description": "Prodaric Framework — extensión de demostración (menús y ejemplos de uso)",
+  "description": "Prodaric Framework — extensión Hello World (demostración del potencial del framework)",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "theiaExtensions": [
     {
-      "frontend": "lib/browser/demo-extension-frontend-module.js"
+      "frontend": "lib/browser/hello-world-extension-frontend-module.js"
     }
   ],
   "scripts": {
