@@ -1,5 +1,5 @@
 /**
- * @coderic/plugin-cloud — Coderic IDE plugin para .cloud
+ * @coderic/plugin-cloud — Prodaric Framework plugin para .cloud
  */
 import type { CodericApp, CodericPlugin, PluginRoute, ReteNodeDefinition } from '@coderic/shell';
 

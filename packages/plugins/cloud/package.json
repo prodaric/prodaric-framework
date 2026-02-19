@@ -1,7 +1,7 @@
 {
   "name": "@coderic/plugin-cloud",
   "version": "0.0.1",
-  "description": "Coderic IDE — plugin Coderic .cloud",
+  "description": "Prodaric Framework — plugin Dicon .cloud",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {

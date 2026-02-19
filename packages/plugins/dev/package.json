@@ -1,7 +1,7 @@
 {
   "name": "@coderic/plugin-dev",
   "version": "0.0.1",
-  "description": "Coderic IDE — plugin Coderic .dev",
+  "description": "Prodaric Framework — plugin Dicon .dev",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {

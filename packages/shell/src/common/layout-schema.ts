@@ -1,5 +1,5 @@
 /**
- * Contrato: respuesta de /api/resource/layout (Coderic IDE).
+ * Contrato: respuesta de /api/resource/layout (Prodaric Framework).
  */
 
 export interface ValidationRule {

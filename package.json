@@ -1,7 +1,7 @@
 {
-  "name": "coderic-console",
+  "name": "prodaric-framework",
   "private": true,
-  "description": "Coderic IDE — monorepo",
+  "description": "Prodaric Framework — monorepo (fork of Coderic IDE)",
   "engines": {
     "node": ">=18",
     "npm": ">=8"
@@ -12,11 +12,12 @@
     "apps/*"
   ],
   "scripts": {
-    "build": "npm run build --workspaces --if-present",
+    "build": "npm run build --workspaces --if-present && npm run rebuild -w @coderic/browser-app && npm run build:prod -w @coderic/browser-app",
     "clean": "npm run clean --workspaces --if-present",
     "ide": "npm run start:dev -w @coderic/browser-app",
     "ide:start": "npm run start -w @coderic/browser-app",
-    "ide:build": "npm run rebuild -w @coderic/browser-app && npm run build -w @coderic/browser-app"
+    "ide:build": "npm run rebuild -w @coderic/browser-app && npm run build -w @coderic/browser-app",
+    "start": "npm run start -w @coderic/browser-app -- --port ${PORT:-3000} --hostname 0.0.0.0"
   },
   "devDependencies": {
     "lerna": "2.4.0"

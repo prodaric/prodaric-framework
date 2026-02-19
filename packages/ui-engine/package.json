@@ -1,7 +1,7 @@
 {
   "name": "@coderic/ui-engine",
   "version": "0.0.1",
-  "description": "Coderic IDE — Web Components & Form Engine",
+  "description": "Prodaric Framework — Web Components & Form Engine",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {

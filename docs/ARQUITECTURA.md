@@ -1,4 +1,4 @@
-# CODERIC IDE — Documento de Arquitectura
+# Prodaric Framework — Documento de Arquitectura
 
 **Versión 1.0** · Estado: Blueprint / Fase de Inicialización  
 **Paradigma:** Low-Code Metadata-Driven Orchestrator
@@ -7,9 +7,9 @@
 
 ## 1. Resumen del Sistema
 
-Coderic IDE es un **centro de control unificado** para gestionar el ecosistema Coderic (`.cloud`, `.net`, `.com`, `.dev`). Funciona como un **IDE profesional** que no requiere edición manual de código para la mayoría de sus funciones.
+Prodaric Framework es un **centro de control unificado** para gestionar el ecosistema Dicon (`.cloud`, `.net`, `.com`, `.dev`). Funciona como un **IDE profesional** que no requiere edición manual de código para la mayoría de sus funciones. Fork de Coderic IDE.
 
-A diferencia de un panel administrativo tradicional, Coderic IDE **orquesta flujos de trabajo e infraestructuras mediante metadatos**, adoptando el paradigma *Low-Code Metadata-Driven Orchestrator*. El resultado es una **herramienta de ingeniería de escritorio** corriendo en el navegador.
+A diferencia de un panel administrativo tradicional, Prodaric Framework **orquesta flujos de trabajo e infraestructuras mediante metadatos**, adoptando el paradigma *Low-Code Metadata-Driven Orchestrator*. El resultado es una **herramienta de ingeniería de escritorio** corriendo en el navegador.
 
 ---
 
@@ -50,13 +50,13 @@ Widget Lumino que envuelve Rete.js v2. Orquestación visual de infraestructuras.
 
 ### 3.5 API Client Layer
 
-Comunicación con Coderic Engine. Tres endpoints de metadatos + cliente JSON-RPC 2.0. **Única capa** que hace llamadas de red.
+Comunicación con Dicon Engine (Coderic Engine). Tres endpoints de metadatos + cliente JSON-RPC 2.0. **Única capa** que hace llamadas de red.
 
 ---
 
 ## 4. Protocolo de Metadatos (Tres Endpoints)
 
-El IDE es un cliente “estúpido” altamente capaz; se autoconfigura vía Coderic Engine:
+El IDE es un cliente “estúpido” altamente capaz; se autoconfigura vía Dicon Engine (Coderic Engine):
 
 - **`/api/resource/layout`** — JSON de UI: campos, tipos, validaciones, tabs. El Form Engine lo interpreta y renderiza.
 - **`/api/resource/acl`** — Visibilidad y editabilidad según JWT. Filtro sobre el schema de layout.
@@ -93,7 +93,7 @@ Monorepo npm workspaces; cada paquete bajo scope `@coderic/`.
 
 ## 7. Contratos de Interfaz
 
-Definidos en código en `packages/shell/src/common/` (LayoutSchema, AclSchema, CodericPlugin). Ver tipos TypeScript en ese paquete.
+Definidos en código en `packages/shell/src/common/` (LayoutSchema, AclSchema, CodericPlugin). Ver tipos TypeScript en ese paquete. (CodericPlugin se mantiene por compatibilidad con Theia.)
 
 ---
 
@@ -123,4 +123,4 @@ Monorepo que compila con la estructura completa, **sin** lógica de negocio:
 
 ---
 
-*Coderic IDE · coderic-console · Documento de Arquitectura v1.0*
+*Prodaric Framework · prodaric-framework · Documento de Arquitectura v1.0*

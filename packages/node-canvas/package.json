@@ -1,14 +1,23 @@
 {
   "name": "@coderic/node-canvas",
   "version": "0.0.1",
-  "description": "Coderic IDE — Rete.js v2 canvas widget",
+  "description": "Prodaric Framework — Rete.js v2 canvas widget",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
     "clean": "rimraf lib"
   },
-  "dependencies": {},
+  "dependencies": {
+    "rete": "^2.0.0",
+    "rete-area-plugin": "^2.0.0",
+    "rete-connection-plugin": "^2.0.0",
+    "rete-react-plugin": "^2.0.0",
+    "rete-render-utils": "^2.0.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "styled-components": "^6.1.0"
+  },
   "devDependencies": {
     "rimraf": "^5.0.0",
     "typescript": "~5.4.0"

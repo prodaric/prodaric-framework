@@ -1,5 +1,5 @@
-# Compila Coderic IDE en modo browser y publica el frontend en GitHub Pages.
-# Repo: https://github.com/Coderic/coderic-console
+# Compila Prodaric Framework en modo browser y publica el frontend en GitHub Pages.
+# Repo: https://github.com/prodaric/prodaric-framework
 # Nota: el frontend en Pages no tiene backend; para IDE completo ejecutar localmente (npm run ide).
 
 name: Build and deploy to GitHub Pages

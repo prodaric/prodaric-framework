@@ -1,10 +1,10 @@
 /**
- * @coderic/ide — Coderic IDE aplicación principal.
+ * @coderic/ide — Prodaric Framework aplicación principal (fork Coderic IDE).
  */
 
 import { initApiForConsole } from "./api-test";
 
-export const APP_ID = "coderic-ide";
+export const APP_ID = "prodaric-framework";
 
 /** Inicializa origen del API en navegador (opcional: window.__CODERIC_API_ORIGIN__ en dev). */
 initApiForConsole();

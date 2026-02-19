@@ -1,5 +1,5 @@
 /**
- * Contrato: respuesta de /api/resource/acl (Coderic IDE).
+ * Contrato: respuesta de /api/resource/acl (Prodaric Framework).
  */
 
 export interface AclSchema {

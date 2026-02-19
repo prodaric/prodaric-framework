@@ -1,4 +1,4 @@
 /**
- * @coderic/shell — Coderic IDE shell (Eclipse Theia).
+ * @coderic/shell — Prodaric Framework shell (Eclipse Theia).
  */
 export * from './common';

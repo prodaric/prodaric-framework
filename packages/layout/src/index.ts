@@ -1,5 +1,5 @@
 /**
- * @coderic/layout — Coderic IDE layout (Lumino).
+ * @coderic/layout — Prodaric Framework layout (Lumino).
  */
-// Widgets, panels, registry: se implementarán aquí.
 export const LAYOUT_PACKAGE = '@coderic/layout';
+export { createCrudDemoWidget, mountCrudDemo } from './crud-demo';

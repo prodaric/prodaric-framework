@@ -1,0 +1,11 @@
+# Cloud Native Buildpacks — descriptor del proyecto
+# Uso: pack build coderic-ide [--builder paketobuildpacks/builder-jammy-base]
+
+schema-version = "0.2"
+id = "org.coderic.console"
+name = "Coderic IDE"
+version = "0.1.0"
+
+[[io.buildpacks.build.env]]
+name = "NODE_ENV"
+value = "production"

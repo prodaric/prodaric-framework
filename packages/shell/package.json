@@ -1,7 +1,7 @@
 {
   "name": "@coderic/shell",
   "version": "0.0.1",
-  "description": "Coderic IDE — Eclipse Theia shell",
+  "description": "Prodaric Framework — Eclipse Theia shell",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {

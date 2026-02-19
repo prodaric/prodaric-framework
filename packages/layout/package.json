@@ -1,14 +1,20 @@
 {
   "name": "@coderic/layout",
   "version": "0.0.1",
-  "description": "Coderic IDE — Lumino layout & docking",
+  "description": "Prodaric Framework — Lumino layout & docking",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
     "clean": "rimraf lib"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@lumino/widgets": "^2.7.2",
+    "@lumino/algorithm": "^2.0.4",
+    "@lumino/coreutils": "^2.2.2",
+    "@lumino/disposable": "^2.1.5",
+    "@lumino/signaling": "^2.1.5"
+  },
   "devDependencies": {
     "rimraf": "^5.0.0",
     "typescript": "~5.4.0"

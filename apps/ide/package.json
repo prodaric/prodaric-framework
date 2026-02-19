@@ -1,7 +1,7 @@
 {
   "name": "@coderic/ide",
   "version": "0.0.1",
-  "description": "Coderic IDE — aplicación Theia que ensambla todo",
+  "description": "Prodaric Framework — aplicación Theia que ensambla todo",
   "private": true,
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -15,6 +15,7 @@
   "dependencies": {
     "@coderic/shell": "0.0.1",
     "@coderic/layout": "0.0.1",
+    "@coderic/node-canvas": "0.0.1",
     "@coderic/api-client": "0.0.1"
   },
   "devDependencies": {

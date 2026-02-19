@@ -19,10 +19,12 @@ export default defineConfig({
     alias: {
       "@coderic/ide": resolve(__dirname, "src/index.ts"),
       "@coderic/api-client": resolve(__dirname, "../../packages/api-client/src/index.ts"),
+      "@coderic/layout": resolve(__dirname, "../../packages/layout/src/index.ts"),
+      "@coderic/node-canvas": resolve(__dirname, "../../packages/node-canvas/src/index.ts"),
     },
   },
   optimizeDeps: {
-    include: [],
+    include: ["react", "react-dom", "@lumino/widgets", "rete", "rete-area-plugin", "rete-connection-plugin", "rete-react-plugin", "rete-render-utils"],
   },
   server: {
     port: 5173,

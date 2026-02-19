@@ -1,5 +1,5 @@
 /**
- * @coderic/plugin-net — Coderic IDE plugin para .net
+ * @coderic/plugin-net — Prodaric Framework plugin para .net
  */
 import type { CodericApp, CodericPlugin, PluginRoute, ReteNodeDefinition } from '@coderic/shell';
 

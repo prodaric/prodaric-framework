@@ -1,5 +1,5 @@
 /**
- * Contrato de plugin por dominio (Coderic IDE).
+ * Contrato de plugin por dominio (Prodaric Framework).
  */
 
 // Placeholder: tipos Rete y rutas se definirán cuando se integre node-canvas y api-client.

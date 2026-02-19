@@ -1,4 +1,4 @@
-# Coderic IDE — Arquitectura y TODO list de estimación
+# Prodaric Framework — Arquitectura y TODO list de estimación
 
 **Fuente de verdad:** [docs/ARQUITECTURA.md](./docs/ARQUITECTURA.md) (derivado de *coderic-ide-arquitectura.xml*).  
 Este archivo es la **TODO list para estimar** tiempos de construcción o refactorización.
@@ -15,7 +15,7 @@ Este archivo es la **TODO list para estimar** tiempos de construcción o refacto
 | UI | Web Components nativos | `@coderic/ui-engine` |
 | DI | InversifyJS | (en shell / apps/ide) |
 | Comunicación | JSON-RPC 2.0 + REST | `@coderic/api-client` |
-| Backend referencia | Coderic Engine | (consumido, no construido aquí) |
+| Backend referencia | Dicon Engine (Coderic Engine) | (consumido, no construido aquí) |
 
 **Contratos:** `LayoutSchema`, `AclSchema`, `CodericPlugin` en `packages/shell/src/common/`.
 
@@ -55,7 +55,7 @@ Este archivo es la **TODO list para estimar** tiempos de construcción o refacto
 | A6 | Form Engine: render desde LayoutSchema (/api/resource/layout) | ui-engine | Alta | — h | pendiente | |
 | A7 | Widget Rete.js v2 envuelto en Lumino | node-canvas | Alta | — h | pendiente | |
 | A8 | Clientes REST: layout, acl, data (tres endpoints) | api-client | Alta | — h | pendiente | |
-| A9 | Cliente JSON-RPC 2.0 hacia Coderic Engine | api-client | Alta | — h | pendiente | |
+| A9 | Cliente JSON-RPC 2.0 hacia Dicon Engine | api-client | Alta | — h | pendiente | |
 | A10 | Plugin cloud: nodos, rutas, activación por JWT | plugins/cloud | Media | — h | pendiente | |
 | A11 | Plugins net, com, dev (misma estructura) | plugins/* | Media | — h | pendiente | |
 | A12 | App IDE: ensamblar shell + layout + plugins | apps/ide | Alta | — h | pendiente | |
@@ -82,4 +82,4 @@ Este archivo es la **TODO list para estimar** tiempos de construcción o refacto
 
 ---
 
-*Arquitectura: [docs/ARQUITECTURA.md](./docs/ARQUITECTURA.md). Origen: coderic-ide-arquitectura.xml. Coderic IDE · coderic-console.*
+*Arquitectura: [docs/ARQUITECTURA.md](./docs/ARQUITECTURA.md). Origen: coderic-ide-arquitectura.xml. Prodaric Framework · prodaric-framework.*

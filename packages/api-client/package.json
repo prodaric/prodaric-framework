@@ -1,7 +1,7 @@
 {
   "name": "@coderic/api-client",
   "version": "0.0.1",
-  "description": "Coderic IDE — Coderic Engine API client",
+  "description": "Prodaric Framework — Dicon Engine API client (Coderic Engine)",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {

@@ -1,4 +1,4 @@
-# Coderic IDE — aplicación Theia (navegador)
+# Prodaric Framework — aplicación Theia (navegador)
 
 Esta es la aplicación **IDE real** tipo VS Code / Codespaces: editor (Monaco), explorador de archivos, terminal, búsqueda, etc. Se sirve en **http://localhost:3000**.
 
@@ -21,4 +21,4 @@ npm run start        # solo arrancar (si ya compilaste)
 
 ## Nota
 
-La app en `apps/ide` (y su build Vite con un botón de prueba) es un punto de entrada mínimo para el API. El producto “Coderic IDE” que se despliega en `*/console/` será esta aplicación Theia (`browser-app`).
+La app en `apps/ide` (y su build Vite con un botón de prueba) es un punto de entrada mínimo para el API. El producto “Prodaric Framework” que se despliega en `*/console/` será esta aplicación Theia (`browser-app`).

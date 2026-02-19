@@ -2,10 +2,11 @@
   "private": true,
   "name": "@coderic/browser-app",
   "version": "0.0.1",
-  "description": "Coderic IDE — aplicación Theia para navegador (editor tipo VS Code en localhost)",
+  "description": "Prodaric Framework — aplicación Theia para navegador (editor tipo VS Code en localhost)",
   "scripts": {
     "rebuild": "theia rebuild:browser",
     "build": "theia build --mode development",
+    "build:prod": "theia build --mode production",
     "start": "theia start",
     "start:dev": "npm run rebuild && theia start",
     "watch": "theia build --watch --mode development",
@@ -34,7 +35,7 @@
     "frontend": {
       "config": {
         "defaultLocale": "es",
-        "applicationName": "Coderic IDE",
+        "applicationName": "Prodaric Framework",
         "preferences": {
           "workbench.colorTheme": "light"
         }

@@ -1,6 +1,6 @@
 # @coderic/api-client
 
-Cliente HTTP para el API de Coderic Engine (OpenAPI 3.0). Multi-tenant por dominio: el mismo Engine devuelve distintos endpoints según el host (coderic.org, coderic.dev, coderic.cloud, etc.).
+Cliente HTTP para el API de Dicon Engine / Coderic Engine (OpenAPI 3.0). Multi-tenant por dominio: el mismo Engine devuelve distintos endpoints según el host (coderic.org, coderic.dev, coderic.cloud, etc.).
 
 ## Uso
 
