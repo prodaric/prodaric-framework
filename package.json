@@ -1,23 +1,22 @@
 {
   "name": "prodaric-framework",
   "private": true,
-  "description": "Prodaric Framework — monorepo (fork of Coderic IDE)",
+  "description": "Prodaric Framework \u2014 monorepo (fork of Coderic IDE)",
   "engines": {
     "node": ">=18",
     "npm": ">=8"
   },
   "workspaces": [
     "packages/*",
-    "packages/plugins/*",
     "apps/*"
   ],
   "scripts": {
-    "build": "npm run build --workspaces --if-present && npm run rebuild -w @coderic/browser-app && npm run build:prod -w @coderic/browser-app",
+    "build": "npm run build --workspaces --if-present && npm run rebuild -w @prodaric/browser-app && npm run build:prod -w @prodaric/browser-app",
     "clean": "npm run clean --workspaces --if-present",
-    "ide": "npm run start:dev -w @coderic/browser-app",
-    "ide:start": "npm run start -w @coderic/browser-app",
-    "ide:build": "npm run rebuild -w @coderic/browser-app && npm run build -w @coderic/browser-app",
-    "start": "npm run start -w @coderic/browser-app -- --port ${PORT:-3000} --hostname 0.0.0.0"
+    "ide": "npm run start:dev -w @prodaric/browser-app",
+    "ide:start": "npm run start -w @prodaric/browser-app",
+    "ide:build": "npm run rebuild -w @prodaric/browser-app && npm run build -w @prodaric/browser-app",
+    "start": "npm run start -w @prodaric/browser-app -- --port ${PORT:-3000} --hostname 0.0.0.0"
   },
   "devDependencies": {
     "lerna": "2.4.0"

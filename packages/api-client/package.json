@@ -1,5 +1,5 @@
 {
-  "name": "@coderic/api-client",
+  "name": "@prodaric/api-client",
   "version": "0.0.1",
   "description": "Prodaric Framework — Dicon Engine API client (Coderic Engine)",
   "main": "lib/index.js",
@@ -9,7 +9,7 @@
     "clean": "rimraf lib"
   },
   "dependencies": {
-    "@coderic/shell": "0.0.1"
+    "@prodaric/shell": "0.0.1"
   },
   "devDependencies": {
     "rimraf": "^5.0.0",

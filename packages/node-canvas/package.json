@@ -1,5 +1,5 @@
 {
-  "name": "@coderic/node-canvas",
+  "name": "@prodaric/node-canvas",
   "version": "0.0.1",
   "description": "Prodaric Framework — Rete.js v2 canvas widget",
   "main": "lib/index.js",

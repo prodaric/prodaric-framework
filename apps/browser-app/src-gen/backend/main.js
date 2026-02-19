@@ -70,7 +70,7 @@ globalThis.extensionInfo = [
         "version": "1.68.2"
     },
     {
-        "name": "@coderic/theia-l10n",
+        "name": "@prodaric/theia-l10n",
         "version": "0.0.1"
     }
 ];

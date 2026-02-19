@@ -17,10 +17,10 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@coderic/ide": resolve(__dirname, "src/index.ts"),
-      "@coderic/api-client": resolve(__dirname, "../../packages/api-client/src/index.ts"),
-      "@coderic/layout": resolve(__dirname, "../../packages/layout/src/index.ts"),
-      "@coderic/node-canvas": resolve(__dirname, "../../packages/node-canvas/src/index.ts"),
+      "@prodaric/ide": resolve(__dirname, "src/index.ts"),
+      "@prodaric/api-client": resolve(__dirname, "../../packages/api-client/src/index.ts"),
+      "@prodaric/layout": resolve(__dirname, "../../packages/layout/src/index.ts"),
+      "@prodaric/node-canvas": resolve(__dirname, "../../packages/node-canvas/src/index.ts"),
     },
   },
   optimizeDeps: {

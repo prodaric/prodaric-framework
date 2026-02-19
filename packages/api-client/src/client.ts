@@ -13,7 +13,7 @@ import type {
   OpenApiSpec,
 } from "./types";
 
-const API_CLIENT_PACKAGE = "@coderic/api-client";
+const API_CLIENT_PACKAGE = "@prodaric/api-client";
 
 /** Opciones por petición (auth, etc.) */
 export interface RequestOptions {

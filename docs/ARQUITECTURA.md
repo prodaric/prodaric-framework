@@ -66,16 +66,16 @@ El IDE es un cliente “estúpido” altamente capaz; se autoconfigura vía Dico
 
 ## 5. Estructura del Monorepo
 
-Monorepo npm workspaces; cada paquete bajo scope `@coderic/`.
+Monorepo npm workspaces; cada paquete bajo scope `@prodaric/`.
 
 | Paquete | Responsabilidad |
 |---------|-----------------|
-| @coderic/shell | Theia customizado. Entry points, DI tokens, contratos comunes. |
-| @coderic/layout | Lumino. Widgets base, paneles (sidebar/main/bottom), registro. |
-| @coderic/ui-engine | Web Components + Form Engine. Formularios desde JSON. |
-| @coderic/node-canvas | Widget Rete.js v2 en Lumino. Nodos, conexiones, canvas. |
-| @coderic/api-client | Clientes /layout, /acl, /data. Cliente JSON-RPC 2.0. |
-| @coderic/plugins/* | Un paquete por dominio (.cloud, .net, .com, .dev). Carga bajo demanda por JWT. |
+| @prodaric/shell | Theia customizado. Entry points, DI tokens, contratos comunes. |
+| @prodaric/layout | Lumino. Widgets base, paneles (sidebar/main/bottom), registro. |
+| @prodaric/ui-engine | Web Components + Form Engine. Formularios desde JSON. |
+| @prodaric/node-canvas | Widget Rete.js v2 en Lumino. Nodos, conexiones, canvas. |
+| @prodaric/api-client | Clientes /layout, /acl, /data. Cliente JSON-RPC 2.0. |
+| (plugins por dominio) | Prodaric no incluye plugins .cloud, .net, .com, .dev; se pueden añadir después si se necesitan. |
 
 **apps/ide/** ensambla todo y configura Theia para producción. **config/** contiene TypeScript, ESLint, Jest compartidos.
 
@@ -114,7 +114,7 @@ Monorepo que compila con la estructura completa, **sin** lógica de negocio:
 
 - [x] Monorepo con npm workspaces
 - [x] package.json por paquete con dependencias
-- [x] TypeScript con imports @coderic/*
+- [x] TypeScript con imports @prodaric/*
 - [x] index.ts por paquete, exports tipados
 - [x] Interfaces en packages/shell/src/common/
 - [x] tsc / build sin errores

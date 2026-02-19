@@ -4,8 +4,8 @@
  */
 
 import { APP_ID, runHealthCheck } from "./index";
-import { mountCrudDemo } from "@coderic/layout";
-import { mountModelEditorDemo } from "@coderic/node-canvas";
+import { mountCrudDemo } from "@prodaric/layout";
+import { mountModelEditorDemo } from "@prodaric/node-canvas";
 
 const app = document.getElementById("app");
 if (!app) throw new Error("#app no encontrado");

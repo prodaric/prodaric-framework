@@ -9,12 +9,12 @@ Este archivo es la **TODO list para estimar** tiempos de construcción o refacto
 
 | Capa | Tecnología | Paquete |
 |------|------------|---------|
-| Shell / Comandos | Eclipse Theia | `@coderic/shell` |
-| Layout y docking | Lumino | `@coderic/layout` |
-| Motor de nodos visual | Rete.js v2 | `@coderic/node-canvas` |
-| UI | Web Components nativos | `@coderic/ui-engine` |
+| Shell / Comandos | Eclipse Theia | `@prodaric/shell` |
+| Layout y docking | Lumino | `@prodaric/layout` |
+| Motor de nodos visual | Rete.js v2 | `@prodaric/node-canvas` |
+| UI | Web Components nativos | `@prodaric/ui-engine` |
 | DI | InversifyJS | (en shell / apps/ide) |
-| Comunicación | JSON-RPC 2.0 + REST | `@coderic/api-client` |
+| Comunicación | JSON-RPC 2.0 + REST | `@prodaric/api-client` |
 | Backend referencia | Dicon Engine (Coderic Engine) | (consumido, no construido aquí) |
 
 **Contratos:** `LayoutSchema`, `AclSchema`, `CodericPlugin` en `packages/shell/src/common/`.
@@ -36,7 +36,7 @@ Este archivo es la **TODO list para estimar** tiempos de construcción o refacto
 |----|--------|--------|
 | F1.1 | Monorepo npm workspaces | hecho |
 | F1.2 | package.json por paquete con dependencias | hecho |
-| F1.3 | TypeScript estricto e imports @coderic/* | hecho |
+| F1.3 | TypeScript estricto e imports @prodaric/* | hecho |
 | F1.4 | index.ts por paquete, exports tipados | hecho |
 | F1.5 | Interfaces en packages/shell/src/common/ | hecho |
 | F1.6 | Build (tsc) sin errores | hecho |
@@ -56,8 +56,7 @@ Este archivo es la **TODO list para estimar** tiempos de construcción o refacto
 | A7 | Widget Rete.js v2 envuelto en Lumino | node-canvas | Alta | — h | pendiente | |
 | A8 | Clientes REST: layout, acl, data (tres endpoints) | api-client | Alta | — h | pendiente | |
 | A9 | Cliente JSON-RPC 2.0 hacia Dicon Engine | api-client | Alta | — h | pendiente | |
-| A10 | Plugin cloud: nodos, rutas, activación por JWT | plugins/cloud | Media | — h | pendiente | |
-| A11 | Plugins net, com, dev (misma estructura) | plugins/* | Media | — h | pendiente | |
+| (Plugins .cloud, .net, .com, .dev) | Eliminados en Prodaric; no aplican. | — | — | — | — | |
 | A12 | App IDE: ensamblar shell + layout + plugins | apps/ide | Alta | — h | pendiente | |
 | A13 | Persistencia layout (backend o localStorage, stateless) | shell / api-client | Media | — h | pendiente | |
 | A14 | Tests unitarios por paquete (Jest) | todos | Media | — h | pendiente | |
@@ -78,7 +77,7 @@ Este archivo es la **TODO list para estimar** tiempos de construcción o refacto
 
 - Suma la columna **Estimación** de ítems `pendiente` o `en curso`.
 - Ajusta por riesgo o dependencias (p. ej. +20 % si hay bloqueos externos).
-- **Refactorización:** mismo formato; ítems tipo «Migrar X a Y» o «Extraer Z a @coderic/foo».
+- **Refactorización:** mismo formato; ítems tipo «Migrar X a Y» o «Extraer Z a @prodaric/foo».
 
 ---
 

@@ -1,4 +1,4 @@
-# @coderic/api-client
+# @prodaric/api-client
 
 Cliente HTTP para el API de Dicon Engine / Coderic Engine (OpenAPI 3.0). Multi-tenant por dominio: el mismo Engine devuelve distintos endpoints según el host (coderic.org, coderic.dev, coderic.cloud, etc.).
 
@@ -9,7 +9,7 @@ import {
   createCodericEngineClient,
   setApiOrigin,
   fetchOpenApiSpec,
-} from "@coderic/api-client";
+} from "@prodaric/api-client";
 
 // Opcional: en desarrollo, fijar origen para evitar CORS (ej. conectar a coderic.org desde localhost)
 setApiOrigin("https://coderic.org");

@@ -9,7 +9,7 @@ import {
   clearOpenApiCache,
   type HealthResponse,
   type OpenApiSpec,
-} from "@coderic/api-client";
+} from "@prodaric/api-client";
 
 /** En desarrollo, el host puede definir window.__CODERIC_API_ORIGIN__ (ej. "https://coderic.org") para fijar el API. */
 declare global {

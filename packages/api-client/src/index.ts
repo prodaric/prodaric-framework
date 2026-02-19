@@ -1,10 +1,10 @@
 /**
- * @coderic/api-client — Cliente del API Coderic Engine (OpenAPI, multi-tenant por dominio).
+ * @prodaric/api-client — Cliente del API Coderic Engine (OpenAPI, multi-tenant por dominio).
  * En producción (console en https://coderic.org/console/) usa rutas relativas /api/*.
  * En desarrollo se puede fijar el origen con setApiOrigin('https://coderic.org').
  */
 
-export const API_CLIENT_PACKAGE = "@coderic/api-client";
+export const API_CLIENT_PACKAGE = "@prodaric/api-client";
 
 export {
   setApiOrigin,

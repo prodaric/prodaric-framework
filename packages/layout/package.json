@@ -1,5 +1,5 @@
 {
-  "name": "@coderic/layout",
+  "name": "@prodaric/layout",
   "version": "0.0.1",
   "description": "Prodaric Framework — Lumino layout & docking",
   "main": "lib/index.js",

@@ -1,5 +1,5 @@
 {
-  "name": "@coderic/ide",
+  "name": "@prodaric/ide",
   "version": "0.0.1",
   "description": "Prodaric Framework — aplicación Theia que ensambla todo",
   "private": true,
@@ -13,10 +13,10 @@
     "clean": "rimraf lib dist"
   },
   "dependencies": {
-    "@coderic/shell": "0.0.1",
-    "@coderic/layout": "0.0.1",
-    "@coderic/node-canvas": "0.0.1",
-    "@coderic/api-client": "0.0.1"
+    "@prodaric/shell": "0.0.1",
+    "@prodaric/layout": "0.0.1",
+    "@prodaric/node-canvas": "0.0.1",
+    "@prodaric/api-client": "0.0.1"
   },
   "devDependencies": {
     "rimraf": "^5.0.0",

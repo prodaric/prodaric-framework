@@ -1,5 +1,5 @@
 {
-  "name": "@coderic/shell",
+  "name": "@prodaric/shell",
   "version": "0.0.1",
   "description": "Prodaric Framework — Eclipse Theia shell",
   "main": "lib/index.js",

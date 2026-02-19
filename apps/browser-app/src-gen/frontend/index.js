@@ -40,7 +40,7 @@ function load(container, jsModule) {
 async function preload(container) {
     try {
         await load(container, require('@theia/core/lib/browser/preload/preload-module'));
-        await load(container, require('@coderic/theia-l10n/lib/browser/coderic-l10n-preload-module.js'));
+        await load(container, require('@prodaric/theia-l10n/lib/browser/coderic-l10n-preload-module.js'));
         const { Preloader } = require('@theia/core/lib/browser/preload/preloader');
         const preloader = container.get(Preloader);
         await preloader.initialize();

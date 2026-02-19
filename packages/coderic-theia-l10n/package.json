@@ -1,5 +1,5 @@
 {
-  "name": "@coderic/theia-l10n",
+  "name": "@prodaric/theia-l10n",
   "version": "0.0.1",
   "description": "Prodaric Framework — Marca español como language pack para Theia",
   "main": "lib/node/index.js",

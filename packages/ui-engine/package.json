@@ -1,5 +1,5 @@
 {
-  "name": "@coderic/ui-engine",
+  "name": "@prodaric/ui-engine",
   "version": "0.0.1",
   "description": "Prodaric Framework — Web Components & Form Engine",
   "main": "lib/index.js",
