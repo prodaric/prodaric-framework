@@ -73,7 +73,6 @@ Monorepo npm workspaces; cada paquete bajo scope `@prodaric/`.
 | @prodaric/layout | Lumino. Widgets base, paneles (sidebar/main/bottom), registro. |
 | @prodaric/ui-engine | Web Components + Form Engine. Formularios desde JSON. |
 | @prodaric/node-canvas | Widget Rete.js v2 en Lumino. Nodos, conexiones, canvas. |
-| @prodaric/api-client | Clientes /layout, /acl, /data. Cliente JSON-RPC 2.0. |
 | (plugins por dominio) | Prodaric no incluye plugins .cloud, .net, .com, .dev; se pueden añadir después si se necesitan. |
 
 **apps/ide/** ensambla todo y configura Theia para producción. **config/** contiene TypeScript, ESLint, Jest compartidos.
@@ -83,7 +82,7 @@ Monorepo npm workspaces; cada paquete bajo scope `@prodaric/`.
 ## 6. Decisiones de Arquitectura Clave
 
 1. **Stateless Container** — Contenedor efímero e inmutable. Layout persistido en backend o localStorage; nunca en variables globales.
-2. **Separación de Capas** — ui-engine no importa api-client. api-client no conoce Lumino ni Rete. Comunicación solo por Widget Bus o InversifyJS.
+2. **Separación de Capas** — ui-engine no conoce Lumino ni Rete. Comunicación solo por Widget Bus o InversifyJS. El API REST (health, OpenAPI) se consume con fetch desde apps/ide si se necesita.
 3. **Form-First** — No hay edición de código libre para negocio. Toda UI desde `/api/resource/layout`.
 4. **Plugin por Dominio** — Cada dominio es un plugin independiente, cargado por JWT. Expone: nodos Rete, formularios, rutas API.
 5. **Identidad Visual** — Paleta oscura, densa, precisa. Referencia: Eclipse RCP, NetSuite. Variables CSS centralizadas.

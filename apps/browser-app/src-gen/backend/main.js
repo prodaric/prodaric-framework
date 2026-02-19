@@ -76,6 +76,10 @@ globalThis.extensionInfo = [
     {
         "name": "@prodaric/theia-l10n-es",
         "version": "0.0.1"
+    },
+    {
+        "name": "@prodaric/demo-extension",
+        "version": "0.0.1"
     }
 ];
 

@@ -15,8 +15,7 @@
   "dependencies": {
     "@prodaric/shell": "0.0.1",
     "@prodaric/layout": "0.0.1",
-    "@prodaric/node-canvas": "0.0.1",
-    "@prodaric/api-client": "0.0.1"
+    "@prodaric/node-canvas": "0.0.1"
   },
   "devDependencies": {
     "rimraf": "^5.0.0",

@@ -15,7 +15,7 @@ Entorno de desarrollo integrado profesional basado en web. Centro de control uni
 ## Monorepo
 
 ```
-packages/     shell, layout, ui-engine, node-canvas, api-client, plugins
+packages/     shell, layout, ui-engine, node-canvas, demo-extension, plugins
 apps/ide      aplicación Theia que ensambla todo
 config/       tsconfig.base, jest, eslint
 ```
@@ -36,6 +36,21 @@ npm run ide
 
 Abre **http://localhost:3000** en el navegador. Verás el IDE completo: explorador de archivos, editor de código (Monaco), terminal, búsqueda, preferencias, etc.
 
+### Dónde están los ejemplos (Dashboard, Todo list, Reportes, etc.)
+
+En la **barra de menú superior** del IDE (arriba de todo) verás la entrada **«Prodaric»**. Haz clic en **Prodaric** y se desplegará un menú con todos los ejemplos:
+
+- **Dashboard (ejemplo)** — panel con tarjetas de resumen  
+- **Todo list (ejemplo)** — lista de tareas (añadir, completar, eliminar)  
+- **Reportes (ejemplo)** — tabla y exportar PDF simulado  
+- **Formularios (ejemplo)** — formulario con varios tipos de campo  
+- **CRUD (ejemplo)** — listado con añadir y eliminar  
+- **Gráficos (ejemplo)** — gráfico de barras/líneas (ECharts)  
+- **Docking (ejemplo)** — panel con pestañas  
+- **Acerca del framework** — resumen del stack  
+
+Cada opción abre un panel en el área central del IDE. Si no ves el menú «Prodaric», asegúrate de haber hecho `npm run build` y luego `npm run ide` (o `npm run ide:start`) desde la raíz del proyecto.
+
 - **Solo iniciar** (si ya compilaste antes): `npm run ide:start`
 - **Recompilar y luego iniciar**: `npm run ide:build` y en otra terminal `npm run ide:start`
 - **Desde la carpeta de la app**: `cd apps/browser-app && npm run start:dev`
@@ -48,7 +63,7 @@ La **página con un botón** que había antes corresponde a `apps/ide` (build Vi
   ```bash
   npm run build
   ```
-  El resultado va a **`lib/`** en cada paquete (no a `dist/`): `apps/ide/lib/`, `packages/api-client/lib/`, etc.
+  El resultado va a **`lib/`** en cada paquete (no a `dist/`): `apps/ide/lib/`, `packages/shell/lib/`, etc.
 
 - **Build del IDE Theia (browser-app):** el resultado del build de Theia queda en `apps/browser-app/lib/` (backend) y en los assets generados por webpack. No hay un único `dist/`; el servidor sirve desde la propia app con `theia start`.
 
@@ -62,6 +77,73 @@ En cada push a `master` o `main`, el workflow [`.github/workflows/deploy-pages.y
 2. Tras el primer despliegue, el frontend estará en `https://<org>.github.io/prodaric-framework/`.
 
 **Nota:** En Pages solo se sirve el frontend estático; no hay backend. Para usar el IDE completo (archivos, terminal, etc.) hay que ejecutarlo en local (`npm run ide`) o desplegar backend y frontend en un host que soporte Node.
+
+## Docker (Podman / Docker)
+
+Puedes construir y ejecutar el framework como contenedor. El **Dockerfile** en la raíz hace `npm ci`, `npm run build` y arranca con `npm start`. El archivo **`.dockerignore`** excluye `node_modules`, `.git`, `lib`, `dist` y artefactos de desarrollo para builds más rápidos.
+
+**Requisitos:** Docker o Podman.
+
+### Construir la imagen
+
+Desde la raíz del repositorio:
+
+```bash
+docker build -t prodaric-framework .
+# o con Podman:
+podman build -t prodaric-framework .
+```
+
+### Ejecutar el contenedor
+
+```bash
+docker run -p 3000:3000 prodaric-framework
+# o con Podman:
+podman run -p 3000:3000 prodaric-framework
+```
+
+Abre **http://localhost:3000** en el navegador para usar el IDE.
+
+**Variables de entorno:**
+
+- **`PORT`** (opcional): puerto donde escucha el servidor. Por defecto `3000`. En el contenedor suele exponerse con `-p 3000:3000`; si cambias el puerto interno, ajusta el mapeo (p. ej. `-p 8080:8080` y `-e PORT=8080`).
+
+## Aplicación de escritorio (Electron)
+
+El IDE puede empaquetarse como aplicación de escritorio con **Electron** e **electron-builder**. Los instaladores se generan desde `apps/browser-app`.
+
+**Requisitos:** Node ≥18, npm instalado en la raíz del monorepo (y `npm run build` ya ejecutado para los paquetes). Para generar instaladores **Windows** hace falta ejecutar en Windows; para **Linux**, en Linux (o en un contenedor/CI con las herramientas necesarias).
+
+### Desarrollar en modo Electron (sin instalar)
+
+Desde la raíz del monorepo, tras un build completo:
+
+```bash
+cd apps/browser-app
+npm run rebuild:electron
+npm run build:electron:prod
+npm run start:electron
+```
+
+Se abre la ventana de Electron con el IDE.
+
+### Generar instaladores
+
+Desde `apps/browser-app`:
+
+```bash
+# Instalador Windows (NSIS, .exe) — ejecutar en Windows
+npm run package:electron
+```
+
+Los artefactos quedan en `apps/browser-app/dist/`:
+
+- **Windows:** `ProdaricFramework-Setup.exe` (instalador NSIS).
+- **Linux:** `Prodaric Framework-x.x.x.AppImage`, `.deb` (Debian/Ubuntu) y `.rpm` (Fedora/RHEL), según la plataforma donde ejecutes el comando. En Fedora puedes instalar el `.rpm` con `sudo dnf install ./Prodaric\ Framework-*.rpm` o `rpm -i`.
+
+Para generar solo el directorio empaquetado (sin instalador, útil para pruebas): `npm run package:electron:dir`.
+
+**Iconos (opcional):** puedes añadir `apps/browser-app/resources/icon.ico` (Windows) y recursos para Linux/macOS; si no existen, electron-builder usa iconos por defecto.
 
 ## Cloud Native Buildpacks (Pack) y Heroku
 

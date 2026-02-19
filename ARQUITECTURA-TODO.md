@@ -14,8 +14,8 @@ Este archivo es la **TODO list para estimar** tiempos de construcción o refacto
 | Motor de nodos visual | Rete.js v2 | `@prodaric/node-canvas` |
 | UI | Web Components nativos | `@prodaric/ui-engine` |
 | DI | InversifyJS | (en shell / apps/ide) |
-| Comunicación | JSON-RPC 2.0 + REST | `@prodaric/api-client` |
-| Backend referencia | Dicon Engine (Coderic Engine) | (consumido, no construido aquí) |
+| Comunicación | REST (fetch desde apps/ide si aplica) | — |
+| Backend referencia | Dicon Engine / Coderic Engine | (consumido, no construido aquí; paquete api-client eliminado) |
 
 **Contratos:** `LayoutSchema`, `AclSchema`, `CodericPlugin` en `packages/shell/src/common/`.
 
@@ -45,21 +45,23 @@ Este archivo es la **TODO list para estimar** tiempos de construcción o refacto
 
 ## TODO list — Construcción / Refactorización (estimación)
 
+**Estado alineado con [AGENT-TODO.md](./AGENT-TODO.md).** Los ítem en `pendiente` (A12, A13) están en la **Cola de tareas para procesar** del agente; no están sin asignar.
+
 | ID | Tarea | Capa/Paquete | Prioridad | Estimación | Estado | Notas |
 |----|--------|----------------|-----------|------------|--------|--------|
-| A1 | Integrar Eclipse Theia en shell (customización mínima) | shell | Alta | — h | pendiente | |
-| A2 | Definir tokens y contenedor InversifyJS en shell | shell | Alta | — h | pendiente | |
-| A3 | Integración Lumino: widgets base y docking | layout | Alta | — h | pendiente | |
-| A4 | Registro de widgets (registry) y paneles predefinidos | layout | Media | — h | pendiente | |
-| A5 | Web Components base y tema (CSS variables, paleta oscura) | ui-engine | Alta | — h | pendiente | |
-| A6 | Form Engine: render desde LayoutSchema (/api/resource/layout) | ui-engine | Alta | — h | pendiente | |
-| A7 | Widget Rete.js v2 envuelto en Lumino | node-canvas | Alta | — h | pendiente | |
-| A8 | Clientes REST: layout, acl, data (tres endpoints) | api-client | Alta | — h | pendiente | |
-| A9 | Cliente JSON-RPC 2.0 hacia Dicon Engine | api-client | Alta | — h | pendiente | |
+| A1 | Integrar Eclipse Theia en shell (customización mínima) | shell | Alta | — h | hecho | |
+| A2 | Definir tokens y contenedor InversifyJS en shell | shell | Alta | — h | hecho | |
+| A3 | Integración Lumino: widgets base y docking | layout | Alta | — h | hecho | |
+| A4 | Registro de widgets (registry) y paneles predefinidos | layout | Media | — h | hecho | |
+| A5 | Web Components base y tema (CSS variables, paleta oscura) | ui-engine | Alta | — h | hecho | |
+| A6 | Form Engine: render desde LayoutSchema (/api/resource/layout) | ui-engine | Alta | — h | hecho | |
+| A7 | Widget Rete.js v2 envuelto en Lumino | node-canvas | Alta | — h | hecho | |
+| A8 | (Eliminado) Clientes REST Coderic — paquete api-client eliminado. | — | — | — | eliminado | |
+| A9 | (Eliminado) Cliente JSON-RPC Dicon — paquete api-client eliminado. | — | — | — | eliminado | |
 | (Plugins .cloud, .net, .com, .dev) | Eliminados en Prodaric; no aplican. | — | — | — | — | |
 | A12 | App IDE: ensamblar shell + layout + plugins | apps/ide | Alta | — h | pendiente | |
-| A13 | Persistencia layout (backend o localStorage, stateless) | shell / api-client | Media | — h | pendiente | |
-| A14 | Tests unitarios por paquete (Jest) | todos | Media | — h | pendiente | |
+| A13 | Persistencia layout (backend o localStorage, stateless) | shell | Media | — h | pendiente | |
+| A14 | Tests unitarios por paquete (Jest) | todos | Media | — h | hecho | layout; resto pendiente |
 
 ---
 

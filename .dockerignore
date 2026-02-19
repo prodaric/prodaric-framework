@@ -1,0 +1,36 @@
+# Dependencias (se instalan con npm ci en el build)
+node_modules
+
+# Control de versiones
+.git
+.gitignore
+.gitattributes
+
+# Artefactos de build (se generan en el contenedor)
+lib
+dist
+*.tsbuildinfo
+
+# Cache y entorno local
+.npm
+.cache
+.env
+.env.*
+!.env.example
+
+# IDE y herramientas
+.cursor
+.vscode
+*.swp
+*.swo
+.DS_Store
+
+# Tests y cobertura (no necesarios en la imagen)
+coverage
+*.log
+npm-debug.log*
+
+# Documentación de desarrollo (opcional excluir; reducir tamaño)
+# docs
+# *.md
+# !README.md

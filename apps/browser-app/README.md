@@ -19,6 +19,10 @@ npm run start:dev   # rebuild + start (primera vez o tras cambiar deps)
 npm run start        # solo arrancar (si ya compilaste)
 ```
 
+## Dónde ver los ejemplos del framework
+
+Cuando el IDE esté abierto en **http://localhost:3000**, mira la **barra de menú de arriba** (donde suele estar Archivo, Edición, etc.). Ahí aparece **Prodaric**. Clic en **Prodaric** → se abre un menú con: Dashboard, Todo list, Reportes, Formularios, CRUD, Gráficos, Docking y Acerca del framework. Cada uno abre un panel de ejemplo en la zona central.
+
 ## Nota
 
 La app en `apps/ide` (y su build Vite con un botón de prueba) es un punto de entrada mínimo para el API. El producto “Prodaric Framework” que se despliega en `*/console/` será esta aplicación Theia (`browser-app`).

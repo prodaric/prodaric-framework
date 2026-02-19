@@ -3,3 +3,4 @@
  */
 export const NODE_CANVAS_PACKAGE = '@prodaric/node-canvas';
 export { mountModelEditorDemo } from './model-editor-demo';
+export { createReteCanvasWidget } from './rete-canvas-widget';

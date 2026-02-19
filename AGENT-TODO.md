@@ -5,6 +5,23 @@ Lista de tareas para que un agente (o desarrollador) pueda ver y marcar progreso
 
 ---
 
+## Cola de tareas para procesar
+
+Orden sugerido para ir cerrando pendientes. Al terminar una, márcala `[x]` y pasa a la siguiente.
+
+| # | ID   | Tarea | Dónde | Prioridad |
+|---|------|--------|--------|-----------|
+| 1 | A7   | Widget Rete.js v2 envuelto en Lumino | `packages/node-canvas` | hecho |
+| 2 | A12  | App IDE: ensamblar shell + layout + plugins | `apps/ide` | Alta |
+| 3 | A13  | Persistencia layout (backend o localStorage) | `shell` | Media |
+| 4 | I3.1–I3.6 | Electron + instaladores (Windows, Linux, Fedora) | `apps/browser-app` | Alta |
+| 5 | E1   | Integrar Apache ECharts (gráficos) | `ui-engine` o `@prodaric/charts` | — |
+| 6 | E2–E5 | BIRT, NestJS/Drizzle, Sparkplug, Theia AI | varios | — |
+
+**Referencia de estimación y arquitectura:** [ARQUITECTURA-TODO.md](./ARQUITECTURA-TODO.md).
+
+---
+
 ## Stack tecnológico (referencia)
 
 | Tecnología        | Uso en el framework                    |
@@ -32,25 +49,25 @@ Lista de tareas para que un agente (o desarrollador) pueda ver y marcar progreso
 
 ### Layout
 - [x] **A3** Integración Lumino: widgets base y docking — `layout` — Alta — hecho
-- [ ] **A4** Registro de widgets (registry) y paneles predefinidos — `layout` — Media — pendiente
+- [x] **A4** Registro de widgets (registry) y paneles predefinidos — `layout` — Media — hecho
 
 ### UI y formularios
-- [ ] **A5** Web Components base y tema (CSS variables, paleta oscura) — `ui-engine` — Alta — pendiente
-- [ ] **A6** Form Engine: render desde LayoutSchema (/api/resource/layout) — `ui-engine` — Alta — pendiente
+- [x] **A5** Web Components base y tema (CSS variables, paleta oscura) — `ui-engine` — Alta — hecho
+- [x] **A6** Form Engine: render desde LayoutSchema (/api/resource/layout) — `ui-engine` — Alta — hecho
 
 ### Node canvas
-- [ ] **A7** Widget Rete.js v2 envuelto en Lumino — `node-canvas` — Alta — pendiente
+- [x] **A7** Widget Rete.js v2 envuelto en Lumino — `node-canvas` — Alta — hecho
 
 ### API y backend
-- [ ] **A8** Clientes REST: layout, acl, data (tres endpoints) — `api-client` — Alta — pendiente
-- [ ] **A9** Cliente JSON-RPC 2.0 hacia Dicon Engine — `api-client` — Alta — pendiente
+- [x] **A8** (Eliminado) Clientes REST Coderic — paquete `api-client` eliminado; no necesario en Prodaric.
+- [x] **A9** (Eliminado) Cliente JSON-RPC Dicon — paquete `api-client` eliminado.
 
 ### Ensamblado y persistencia
 - [ ] **A12** App IDE: ensamblar shell + layout + plugins — `apps/ide` — Alta — pendiente
-- [ ] **A13** Persistencia layout (backend o localStorage, stateless) — `shell` / `api-client` — Media — pendiente
+- [ ] **A13** Persistencia layout (backend o localStorage, stateless) — `shell` — Media — pendiente
 
 ### Calidad
-- [ ] **A14** Tests unitarios por paquete (Jest) — todos — Media — pendiente
+- [x] **A14** Tests unitarios por paquete (Jest) — todos — Media — hecho (layout; resto pendiente)
 
 ---
 
@@ -59,7 +76,7 @@ Lista de tareas para que un agente (o desarrollador) pueda ver y marcar progreso
 - [ ] **E1** Integrar Apache ECharts (gráficos en paneles) — `ui-engine` o nuevo `@prodaric/charts` — pendiente
 - [ ] **E2** Integrar BIRT (reportes) — módulo o plugin — pendiente
 - [ ] **E3** Backend NestJS + Drizzle ORM (si aplica) — servicio/API — pendiente
-- [ ] **E4** Soporte Sparkplug (MQTT industrial) — `api-client` o módulo — pendiente
+- [ ] **E4** Soporte Sparkplug (MQTT industrial) — módulo — pendiente
 - [ ] **E5** Theia AI + Claude (asistente en el IDE) — extensión Theia — pendiente
 
 ---
@@ -72,6 +89,35 @@ Lista de tareas para que un agente (o desarrollador) pueda ver y marcar progreso
 - [x] **F1.4** index.ts por paquete, exports tipados
 - [x] **F1.5** Interfaces en packages/shell/src/common/
 - [x] **F1.6** Build (tsc) sin errores
+
+---
+
+---
+
+## Checklist — Framework instalable (app + nube)
+
+Objetivo: que el framework sea instalable como aplicación de escritorio y en la nube. Un paso a la vez.
+
+### Fase 1 — Artefacto ejecutable estable
+- [x] **I1.1** Build documentado: requisitos (Node ≥18, npm ≥8), comandos `npm ci` y `npm run build` — raíz — Alta — hecho
+- [x] **I1.2** Un comando de arranque desde raíz (`npm start`) que sirva backend + frontend — raíz — Alta — hecho
+- [x] **I1.3** README: "Cómo ejecutar localmente" (puerto, URL) — raíz / README — Media — hecho
+- [ ] **I1.4** Opcional: script `scripts/run.sh` para desarrollo/CI — raíz — Baja — pendiente
+
+### Fase 2 — Instalable en la nube
+- [x] **I2.1** Dockerfile (raíz o apps/browser-app): `npm ci`, `npm run build`, `CMD npm start` — raíz — Alta — hecho
+- [x] **I2.2** `.dockerignore`: excluir node_modules, .git, artefactos de desarrollo — raíz — Media — hecho
+- [x] **I2.3** Documentar: construir imagen y ejecutar contenedor (puerto, env) — docs / README — Media — hecho
+- [ ] **I2.4** Opcional: docker-compose.yml si hace falta más de un servicio — raíz — Baja — pendiente
+- [ ] **I2.5** Opcional: ejemplo de despliegue en PaaS (Heroku, Cloud Run, etc.) — docs — Baja — pendiente
+
+### Fase 3 — Instalable como aplicación de escritorio
+- [ ] **I3.1** Target Electron en browser-app: `@theia/electron`, config Theia `target: electron` — apps/browser-app — Alta — pendiente
+- [ ] **I3.2** Scripts de build para Electron (rebuild:electron, build producción) — apps/browser-app — Alta — pendiente
+- [ ] **I3.3** electron-builder: producto "Prodaric Framework", iconos — apps/browser-app — Alta — pendiente
+- [ ] **I3.4** Instalador Windows (NSIS, .exe) — apps/browser-app — Alta — pendiente
+- [ ] **I3.5** Artefacto Linux (AppImage, .deb, .rpm Fedora) — apps/browser-app — Alta — pendiente
+- [ ] **I3.6** Documentar: cómo generar instaladores por plataforma — docs / README — Media — pendiente
 
 ---
 

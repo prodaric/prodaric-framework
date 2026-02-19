@@ -14,9 +14,14 @@
     "clean": "rimraf lib"
   },
   "dependencies": {
-    "@theia/core": "^1.50.0",
+    "@prodaric/layout": "0.0.1",
+    "@prodaric/node-canvas": "0.0.1",
     "@prodaric/shell": "0.0.1",
-    "@prodaric/layout": "0.0.1"
+    "@prodaric/ui-engine": "0.0.1",
+    "@theia/core": "^1.50.0",
+    "echarts": "^5.5.0",
+    "jspdf": "^2.5.2",
+    "jspdf-autotable": "^3.8.4"
   },
   "devDependencies": {
     "rimraf": "^5.0.0",

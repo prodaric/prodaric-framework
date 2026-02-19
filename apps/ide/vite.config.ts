@@ -18,7 +18,6 @@ export default defineConfig({
   resolve: {
     alias: {
       "@prodaric/ide": resolve(__dirname, "src/index.ts"),
-      "@prodaric/api-client": resolve(__dirname, "../../packages/api-client/src/index.ts"),
       "@prodaric/layout": resolve(__dirname, "../../packages/layout/src/index.ts"),
       "@prodaric/node-canvas": resolve(__dirname, "../../packages/node-canvas/src/index.ts"),
     },

@@ -2,7 +2,7 @@
  * Contrato de plugin por dominio (Prodaric Framework).
  */
 
-// Placeholder: tipos Rete y rutas se definirán cuando se integre node-canvas y api-client.
+// Placeholder: tipos Rete y rutas se definirán cuando se integre node-canvas.
 export interface ReteNodeDefinition {
   type: string;
   label: string;

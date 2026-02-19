@@ -2,19 +2,27 @@
   "private": true,
   "name": "@prodaric/browser-app",
   "version": "0.0.1",
-  "description": "Prodaric Framework — aplicación Theia para navegador (editor tipo VS Code en localhost)",
+  "description": "Prodaric Framework — aplicación Theia para navegador y escritorio (Electron)",
+  "main": "scripts/theia-electron-main.js",
   "scripts": {
     "rebuild": "theia rebuild:browser",
+    "rebuild:electron": "theia rebuild:electron",
     "build": "theia build --mode development",
     "build:prod": "theia build --mode production",
+    "build:electron": "theia build --app-target=electron --mode development",
+    "build:electron:prod": "theia build --app-target=electron --mode production",
     "start": "theia start",
     "start:dev": "npm run rebuild && theia start",
+    "start:electron": "electron scripts/theia-electron-main.js",
     "watch": "theia build --watch --mode development",
-    "clean": "theia clean"
+    "clean": "theia clean",
+    "package:electron": "npm run rebuild:electron && npm run build:electron:prod && electron-builder --publish never",
+    "package:electron:dir": "npm run rebuild:electron && npm run build:electron:prod && electron-builder --dir --publish never"
   },
   "dependencies": {
     "@theia/core": "^1.50.0",
     "@theia/editor": "^1.50.0",
+    "@theia/electron": "^1.50.0",
     "@theia/file-search": "^1.50.0",
     "@theia/filesystem": "^1.50.0",
     "@theia/markers": "^1.50.0",
@@ -30,7 +38,9 @@
     "@prodaric/demo-extension": "0.0.1"
   },
   "devDependencies": {
-    "@theia/cli": "^1.50.0"
+    "@theia/cli": "^1.50.0",
+    "electron": "^28.0.0",
+    "electron-builder": "^24.0.0"
   },
   "theia": {
     "target": "browser",
@@ -42,6 +52,21 @@
           "workbench.colorTheme": "light"
         }
       }
+    }
+  },
+  "build": {
+    "appId": "org.prodaric.framework",
+    "productName": "Prodaric Framework",
+    "copyright": "Copyright © 2004-2025 Coderic / Prodaric",
+    "directories": { "output": "dist" },
+    "files": ["lib", "src-gen", "scripts"],
+    "extraMetadata": { "main": "scripts/theia-electron-main.js" },
+    "win": { "target": ["nsis"] },
+    "linux": { "target": ["AppImage", "deb", "rpm"], "category": "Development" },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "ProdaricFramework-Setup.${ext}"
     }
   }
 }
