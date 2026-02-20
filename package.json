@@ -11,7 +11,7 @@
     "apps/*"
   ],
   "scripts": {
-    "build": "npm run build -w @prodaric/layout && npm run build -w @prodaric/node-canvas && npm run build -w @prodaric/shell && npm run build -w @prodaric/ui-engine && npm run build -w @prodaric/prodaric-theia-l10n-es && npm run build -w @prodaric/hello-world-extension && npm run rebuild -w @prodaric/browser-app && npm run build:prod -w @prodaric/browser-app",
+    "build": "npm run build -w @prodaric/layout && npm run build -w @prodaric/node-canvas && npm run build -w @prodaric/shell && npm run build -w @prodaric/ui-engine && npm run build -w @prodaric/theia-l10n-es && npm run build -w @prodaric/hello-world-extension && npm run rebuild -w @prodaric/browser-app && npm run build:prod -w @prodaric/browser-app",
     "clean": "npm run clean --workspaces --if-present",
     "ide": "npm run start:dev --prefix apps/browser-app",
     "ide:start": "npm run start --prefix apps/browser-app",
