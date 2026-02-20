@@ -1,10 +1,14 @@
-# Empaqueta Prodaric Framework con Electron al publicar un release.
-# Genera: Linux (.deb, .rpm con spec propio, AppImage), Windows (.exe NSIS), macOS.
-# Dispara: al crear/publicar un release o manualmente (workflow_dispatch).
+# CI unificado: test en push/PR; test + build + empaquetado solo en release.
+# Push/PR: solo test (para Dependabot y validación previa a merge).
+# Release (published) o workflow_dispatch: test → build → package (Linux, Windows, macOS).
 
-name: Release — Electron packages
+name: CI
 
 on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
   release:
     types: [published]
   workflow_dispatch:
@@ -13,7 +17,57 @@ permissions:
   contents: read
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install native dependencies (Linux)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libx11-dev libxkbfile-dev libsecret-1-dev
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Test
+        run: npm run test
+
+  build:
+    needs: test
+    if: github.event_name == 'release' && github.event.action == 'published' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install native dependencies (Linux)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libx11-dev libxkbfile-dev libsecret-1-dev
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Build
+        run: npm run build
+
   package:
+    needs: build
+    if: github.event_name == 'release' && github.event.action == 'published' || github.event_name == 'workflow_dispatch'
     strategy:
       fail-fast: false
       matrix:
@@ -37,7 +91,7 @@ jobs:
           node-version: "20"
           cache: npm
 
-      - name: Install dependencies (Linux native + rpm para .rpm)
+      - name: Install dependencies (Linux native + rpm)
         if: matrix.os == 'ubuntu-latest'
         run: |
           sudo apt-get update
