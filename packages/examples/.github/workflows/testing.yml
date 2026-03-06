@@ -1,0 +1,35 @@
+# Tests en push/PR. Requiere PRODARIC_NPM_TOKEN para instalar @prodaric/*.
+
+name: Testing
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.PRODARIC_NPM_TOKEN || secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@prodaric"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Test
+        run: npm run test --if-present
