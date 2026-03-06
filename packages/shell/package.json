@@ -2,6 +2,17 @@
   "name": "@prodaric/shell",
   "version": "0.0.1",
   "description": "Prodaric Framework — Eclipse Theia shell",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prodaric/shell.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "files": [
+    "lib",
+    "README.md"
+  ],
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "theiaExtensions": [

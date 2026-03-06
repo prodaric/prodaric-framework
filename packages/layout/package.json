@@ -2,6 +2,17 @@
   "name": "@prodaric/layout",
   "version": "0.0.1",
   "description": "Prodaric Framework — Lumino layout & docking",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prodaric/layout.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "files": [
+    "lib",
+    "README.md"
+  ],
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
