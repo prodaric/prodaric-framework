@@ -22,7 +22,8 @@
   ],
   "scripts": {
     "build": "tsc",
-    "clean": "rimraf lib"
+    "clean": "rimraf lib",
+    "test": "echo \"No tests yet\""
   },
   "dependencies": {
     "@microsoft/fast-components": "^2.30.6",

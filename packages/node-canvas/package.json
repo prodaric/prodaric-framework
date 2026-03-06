@@ -17,7 +17,8 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "clean": "rimraf lib"
+    "clean": "rimraf lib",
+    "test": "echo \"No tests yet\""
   },
   "dependencies": {
     "@lumino/coreutils": "^2.2.0",

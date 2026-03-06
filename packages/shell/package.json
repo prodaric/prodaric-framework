@@ -20,7 +20,8 @@
   ],
   "scripts": {
     "build": "tsc",
-    "clean": "rimraf lib"
+    "clean": "rimraf lib",
+    "test": "echo \"No tests yet\""
   },
   "dependencies": {
     "@theia/core": "^1.50.0"
