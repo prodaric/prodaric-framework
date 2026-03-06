@@ -11,18 +11,18 @@ BackendApplicationConfigProvider.set({
 globalThis.extensionInfo = [
     {
         "name": "@theia/electron",
-        "version": "1.68.2"
+        "version": "1.69.0"
     },
     {
         "name": "@theia/core",
-        "version": "1.68.2"
+        "version": "1.69.0"
     },
     {
         "name": "@prodaric/shell",
         "version": "0.0.1"
     },
     {
-        "name": "@prodaric/hello-world-extension",
+        "name": "@prodaric/examples",
         "version": "0.0.1"
     },
     {
@@ -31,59 +31,59 @@ globalThis.extensionInfo = [
     },
     {
         "name": "@theia/variable-resolver",
-        "version": "1.68.2"
+        "version": "1.69.0"
     },
     {
         "name": "@theia/editor",
-        "version": "1.68.2"
+        "version": "1.69.0"
     },
     {
         "name": "@theia/filesystem",
-        "version": "1.68.2"
+        "version": "1.69.0"
     },
     {
         "name": "@theia/process",
-        "version": "1.68.2"
+        "version": "1.69.0"
     },
     {
         "name": "@theia/workspace",
-        "version": "1.68.2"
+        "version": "1.69.0"
     },
     {
         "name": "@theia/file-search",
-        "version": "1.68.2"
+        "version": "1.69.0"
     },
     {
         "name": "@theia/markers",
-        "version": "1.68.2"
+        "version": "1.69.0"
     },
     {
         "name": "@theia/messages",
-        "version": "1.68.2"
+        "version": "1.69.0"
     },
     {
         "name": "@theia/outline-view",
-        "version": "1.68.2"
+        "version": "1.69.0"
     },
     {
         "name": "@theia/monaco",
-        "version": "1.68.2"
+        "version": "1.69.0"
     },
     {
         "name": "@theia/navigator",
-        "version": "1.68.2"
+        "version": "1.69.0"
     },
     {
         "name": "@theia/userstorage",
-        "version": "1.68.2"
+        "version": "1.69.0"
     },
     {
         "name": "@theia/preferences",
-        "version": "1.68.2"
+        "version": "1.69.0"
     },
     {
         "name": "@theia/terminal",
-        "version": "1.68.2"
+        "version": "1.69.0"
     }
 ];
 

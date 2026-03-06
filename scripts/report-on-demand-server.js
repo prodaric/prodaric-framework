@@ -4,7 +4,10 @@
  * y devuelve el PDF. Sin servidor persistente de reportes; solo el proceso
  * que genera el informe cuando se pide.
  *
+ * Si el runtime BIRT no existe, ejecuta automáticamente ensure (report-server.sh ensure).
+ *
  * Uso: node scripts/report-on-demand-server.js [puerto]
+ *   o: npx prodaric-report-on-demand [puerto]
  * Default: puerto 8082. El IDE puede llamar a http://localhost:8082/generate?name=productos
  */
 
@@ -17,6 +20,38 @@ const os = require('os');
 const PORT = parseInt(process.env.REPORT_SERVER_PORT || process.argv[2] || '8082', 10);
 const REPO_ROOT = path.resolve(__dirname, '..');
 const SCRIPT = path.join(REPO_ROOT, 'scripts', 'report-on-demand.sh');
+const RUNTIME_DIR = process.env.REPORT_SERVER_RUNTIME || path.join(REPO_ROOT, '.report-server');
+const BIRT_EXTRACT = 'birt-runtime-4.14.0-202312020807';
+const REPORT_ENGINE_CANONICAL = path.join(RUNTIME_DIR, BIRT_EXTRACT, 'ReportEngine');
+const REPORT_ENGINE_LEGACY = path.join(RUNTIME_DIR, 'ReportEngine');
+
+function runtimeReady() {
+  try {
+    const engine = fs.existsSync(REPORT_ENGINE_CANONICAL)
+      ? REPORT_ENGINE_CANONICAL
+      : fs.existsSync(REPORT_ENGINE_LEGACY)
+        ? REPORT_ENGINE_LEGACY
+        : null;
+    return engine !== null && fs.existsSync(path.join(engine, 'lib'));
+  } catch {
+    return false;
+  }
+}
+
+function ensureRuntime() {
+  return new Promise((resolve, reject) => {
+    const ensureScript = path.join(REPO_ROOT, 'scripts', 'report-server.sh');
+    const child = spawn('bash', [ensureScript, 'ensure'], {
+      cwd: REPO_ROOT,
+      stdio: ['ignore', 'inherit', 'inherit'],
+    });
+    child.on('close', (code) => {
+      if (code === 0 && runtimeReady()) resolve();
+      else reject(new Error(`ensure falló con código ${code}`));
+    });
+    child.on('error', reject);
+  });
+}
 
 function runReport(name) {
   return new Promise((resolve, reject) => {
@@ -76,6 +111,18 @@ const server = http.createServer(async (req, res) => {
   res.end('Not found');
 });
 
-server.listen(PORT, '127.0.0.1', () => {
-  console.log(`Report on demand: http://127.0.0.1:${PORT}/generate?name=productos`);
+async function start() {
+  if (!runtimeReady()) {
+    console.log('Runtime BIRT no encontrado. Ejecutando ensure (descarga/despliegue)...');
+    await ensureRuntime();
+    console.log('Runtime listo.');
+  }
+  server.listen(PORT, '127.0.0.1', () => {
+    console.log(`Report on demand: http://127.0.0.1:${PORT}/generate?name=productos`);
+  });
+}
+
+start().catch((err) => {
+  console.error(err.message || err);
+  process.exit(1);
 });

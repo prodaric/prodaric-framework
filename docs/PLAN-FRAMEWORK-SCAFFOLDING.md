@@ -20,7 +20,7 @@ Documento de planificación para mantener **hoy** un único repositorio y, **en 
 
 - **Repositorio único:** `prodaric/prodaric-framework`.
 - **Contenido:** monorepo con:
-  - `packages/*`: layout, shell, ui-engine, node-canvas, theia-l10n-es, hello-world-extension (motor).
+  - `packages/*`: layout, shell, ui-engine, node-canvas, theia-l10n-es, examples (motor).
   - `apps/browser-app`: aplicación IDE Theia/Electron (referencia).
   - `apps/ide`: app Vite de ejemplo.
 - **Nombre raíz:** `prodaric-framework` en `package.json`.

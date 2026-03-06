@@ -48,23 +48,28 @@ ensure_runtime() {
     fi
   fi
 
-  # 2. BIRT runtime
+  # 2. BIRT runtime (el zip no trae carpeta raíz; extraemos dentro de BIRT_EXTRACT)
   if [[ ! -d "$BIRT_EXTRACT" ]]; then
     if [[ ! -f "$BIRT_ARCHIVE" ]]; then
       echo "Descargando BIRT Runtime $BIRT_VERSION (~328 MB)..."
       curl -sL -o "$BIRT_ARCHIVE" "$BIRT_URL"
     fi
     echo "Descomprimiendo BIRT runtime..."
-    unzip -q -o "$BIRT_ARCHIVE"
+    mkdir -p "$BIRT_EXTRACT"
+    unzip -q -o "$BIRT_ARCHIVE" -d "$BIRT_EXTRACT"
   fi
 
   # 3. Desplegar WebViewerExample como birt-viewer
   WEBAPPS="$RUNTIME_DIR/$TOMCAT_DIR/webapps"
   VIEWER_SRC="$RUNTIME_DIR/$BIRT_EXTRACT/WebViewerExample"
   [[ -d "$VIEWER_SRC" ]] || VIEWER_SRC="$RUNTIME_DIR/$BIRT_EXTRACT/Web Viewer Example"
+  # Fallback: si el zip se extrajo sin -d, WebViewerExample queda en RUNTIME_DIR
+  [[ -d "$VIEWER_SRC" ]] || VIEWER_SRC="$RUNTIME_DIR/WebViewerExample"
+  [[ -d "$VIEWER_SRC" ]] || VIEWER_SRC="$RUNTIME_DIR/Web Viewer Example"
   if [[ ! -d "$VIEWER_SRC" ]]; then
-    echo "No se encontró WebViewerExample en $BIRT_EXTRACT"
+    echo "No se encontró WebViewerExample en $BIRT_EXTRACT ni en $RUNTIME_DIR"
     ls -la "$RUNTIME_DIR/$BIRT_EXTRACT" 2>/dev/null || true
+    ls -la "$RUNTIME_DIR" 2>/dev/null || true
     exit 1
   fi
   if [[ ! -d "$WEBAPPS/birt-viewer" ]]; then

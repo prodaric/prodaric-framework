@@ -15,7 +15,7 @@ Entorno de desarrollo integrado profesional basado en web. Centro de control uni
 ## Monorepo
 
 ```
-packages/     shell, layout, ui-engine, node-canvas, hello-world-extension, plugins
+packages/     shell, layout, ui-engine, node-canvas, examples, plugins
 apps/ide      aplicación Theia que ensambla todo
 config/       tsconfig.base, jest, eslint
 ```
@@ -23,8 +23,8 @@ config/       tsconfig.base, jest, eslint
 ## Arquitectura y estimación
 
 - **Documento de arquitectura (fuente de verdad):** [docs/ARQUITECTURA.md](./docs/ARQUITECTURA.md).  
-- **TODO list para estimar** construcción o refactorización: [ARQUITECTURA-TODO.md](./ARQUITECTURA-TODO.md) (prioridad, estimación en h/días, estado por ítem).
-- **Reportes BIRT (on demand):** [docs/REPORTES-SERVIDOR.md](./docs/REPORTES-SERVIDOR.md) — PDF bajo demanda (un proceso por petición). `./scripts/report-server.sh ensure` y `npm run report-on-demand`; en el IDE, Prodaric → Reportes → Descargar PDF.
+- **TODO list para estimar** construcción o refactorización: [ARQUITECTURA-TODO.md](./docs/ARQUITECTURA-TODO.md) (prioridad, estimación en h/días, estado por ítem).
+- **Reportes BIRT (on demand):** [docs/REPORTES-SERVIDOR.md](./docs/REPORTES-SERVIDOR.md) — PDF bajo demanda (un proceso por petición). Un solo comando: `npm run report-on-demand` (asegura el runtime si falta y arranca el servidor). Binario: `npx prodaric-report-on-demand`. En el IDE, Prodaric → Reportes → Descargar PDF.
 
 ## Ver el IDE (editor tipo VS Code / Theia en localhost)
 
@@ -43,18 +43,21 @@ Abre **http://localhost:3000** en el navegador. Verás el IDE completo: explorad
 
 En la **barra de menú superior** del IDE (arriba de todo) verás la entrada **«Prodaric»**. Haz clic en **Prodaric** y se desplegará un menú con todos los ejemplos:
 
-- **Dashboard (ejemplo)** — panel con tarjetas de resumen  
-- **Todo list (ejemplo)** — lista de tareas (añadir, completar, eliminar)  
+- **Dashboard (ejemplo)** — KPIs, tabla resumen, filtro de período, actividad reciente  
+- **Todo list (ejemplo)** — tareas con filtros (Todas/Pendientes/Hechas), contador, borrar hechas  
 - **Reportes (ejemplo)** — demos BIRT (Productos, Resumen, Ventas); Descargar PDF on demand  
-- **Formularios (ejemplo)** — formulario con varios tipos de campo  
-- **CRUD (ejemplo)** — listado con añadir y eliminar  
-- **Gráficos (ejemplo)** — gráfico de barras/líneas (ECharts)  
-- **Docking (ejemplo)** — panel con pestañas  
-- **Acerca del framework** — resumen del stack  
+- **Formularios (ejemplo)** — validación JSON Schema (ajv)  
+- **CRUD (ejemplo)** — listado con añadir, editar y eliminar  
+- **Gráficos (ejemplo)** — ECharts (barras, líneas, torta)  
+- **Docking (ejemplo)** — panel con pestañas movibles  
+- **Rete.js Modelo (ejemplo)** — editor de nodos  
+- **JSON Schema (ejemplo)** — validar JSON contra esquema  
+- **Shoelace / FAST / Vaadin** — ejemplos de Web Components  
+- **Acerca del framework** — capacidades del framework  
 
 Cada opción abre un panel en el área central del IDE. Si no ves el menú «Prodaric», asegúrate de haber hecho `npm run build` y luego `npm run ide` (o `npm run ide:start`) desde la raíz del proyecto.
 
-**Uso en producción:** los ejemplos del menú Prodaric los aporta la extensión **Hello World** (`@prodaric/hello-world-extension`), pensada solo para demostración. Para un producto real, elimina esa dependencia de `apps/browser-app` y añade tus propias extensiones; ver [packages/hello-world-extension/README.md](packages/hello-world-extension/README.md).
+**Uso en producción:** los ejemplos del menú Prodaric los aporta el paquete **@prodaric/examples** (Dashboard, Reportes, Formularios, CRUD, Gráficos, Web Components, etc.), pensado para demostrar capacidades. Para un producto real, puedes eliminar esa dependencia de `apps/browser-app` y añadir tus propias extensiones; ver [packages/examples/README.md](packages/examples/README.md).
 
 - **Solo iniciar** (si ya compilaste antes): `npm run ide:start`
 - **Recompilar y luego iniciar**: `npm run ide:build` y en otra terminal `npm run ide:start`

@@ -8,8 +8,8 @@ Stack recomendado para el servidor de reportes tipo BIRT que sirve PDF y vistas 
 
 Los reportes se pueden generar **bajo demanda**: un proceso por petición, sin servidor persistente (tipo FaaS interno).
 
-1. **Preparar runtime** (una vez): `./scripts/report-server.sh ensure` (descarga Tomcat + BIRT a `.report-server`).
-2. **Servidor on-demand** (cuando quieras generar PDFs): `npm run report-on-demand` (o `node scripts/report-on-demand-server.js`). Escucha en **http://127.0.0.1:8082**. Al recibir `GET /generate?name=productos`, ejecuta BIRT (ReportRunner) y devuelve el PDF.
+1. **Un solo comando:** `npm run report-on-demand` (o el binario `npx prodaric-report-on-demand`). Si el runtime BIRT no existe, se ejecuta automáticamente `ensure` (descarga Tomcat + BIRT a `.report-server`) y luego arranca el servidor en **http://127.0.0.1:8082**. Al recibir `GET /generate?name=productos`, ejecuta BIRT (ReportRunner) y devuelve el PDF.
+2. Opcional: preparar runtime a mano con `./scripts/report-server.sh ensure` antes de arrancar el servidor.
 3. En el IDE, menú **Prodaric → Reportes**: el botón **Descargar PDF** llama a ese servidor. Si no está arrancado, se indica cómo iniciarlo.
 
 **Demos de reportes:** en `report-templates/` hay tres plantillas de demo: `productos.rptdesign`, `resumen.rptdesign`, `ventas.rptdesign`. En el IDE (Prodaric → Reportes) se listan los tres con botón "Descargar PDF" por cada uno. Generar a mano: `./scripts/report-on-demand.sh --output /tmp/informe.pdf --report productos` (o `resumen`, `ventas`).

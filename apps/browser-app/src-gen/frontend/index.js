@@ -57,7 +57,7 @@ async function preload(container) {
 }
 
 module.exports = (async () => {
-    const { messagingFrontendModule } = require('@theia/core/lib/browser/messaging/messaging-frontend-module');
+    const { messagingFrontendModule } = require('@theia/core/lib/electron-browser/messaging/electron-messaging-frontend-module');
     const container = new Container();
     container.load(messagingFrontendModule);
     
@@ -80,17 +80,19 @@ module.exports = (async () => {
 
     try {
         await load(container, require('@theia/core/lib/browser/i18n/i18n-frontend-module'));
-        await load(container, require('@theia/core/lib/browser/menu/browser-menu-module'));
-        await load(container, require('@theia/core/lib/browser/window/browser-window-module'));
-        await load(container, require('@theia/core/lib/browser/keyboard/browser-keyboard-module'));
-        await load(container, require('@theia/core/lib/browser/request/browser-request-module'));
+        await load(container, require('@theia/core/lib/electron-browser/menu/electron-menu-module'));
+        await load(container, require('@theia/core/lib/electron-browser/window/electron-window-module'));
+        await load(container, require('@theia/core/lib/electron-browser/keyboard/electron-keyboard-module'));
+        await load(container, require('@theia/core/lib/electron-browser/token/electron-token-frontend-module'));
+        await load(container, require('@theia/core/lib/electron-browser/request/electron-browser-request-module'));
         await load(container, require('@prodaric/shell/lib/browser/prodaric-shell-frontend-module.js'));
-        await load(container, require('@prodaric/hello-world-extension/lib/browser/hello-world-extension-frontend-module.js'));
+        await load(container, require('@prodaric/examples/lib/browser/examples-frontend-module.js'));
         await load(container, require('@theia/variable-resolver/lib/browser/variable-resolver-frontend-module'));
         await load(container, require('@theia/editor/lib/browser/editor-frontend-module'));
         await load(container, require('@theia/filesystem/lib/browser/filesystem-frontend-module'));
         await load(container, require('@theia/filesystem/lib/browser/download/file-download-frontend-module'));
         await load(container, require('@theia/filesystem/lib/browser/file-dialog/file-dialog-module'));
+        await load(container, require('@theia/filesystem/lib/electron-browser/file-dialog/electron-file-dialog-module'));
         await load(container, require('@theia/process/lib/common/process-common-module'));
         await load(container, require('@theia/workspace/lib/browser/workspace-frontend-module'));
         await load(container, require('@theia/file-search/lib/browser/file-search-frontend-module'));
@@ -99,6 +101,7 @@ module.exports = (async () => {
         await load(container, require('@theia/outline-view/lib/browser/outline-view-frontend-module'));
         await load(container, require('@theia/monaco/lib/browser/monaco-frontend-module'));
         await load(container, require('@theia/navigator/lib/browser/navigator-frontend-module'));
+        await load(container, require('@theia/navigator/lib/electron-browser/electron-navigator-module'));
         await load(container, require('@theia/userstorage/lib/browser/user-storage-frontend-module'));
         await load(container, require('@theia/preferences/lib/browser/preference-frontend-module'));
         await load(container, require('@theia/terminal/lib/browser/terminal-frontend-module'));

@@ -27,7 +27,7 @@
     "package:electron:linux": "npm run package:electron:dir && bash scripts/build-rpm.sh && electron-builder --linux deb appimage --publish never"
   },
   "dependencies": {
-    "@prodaric/hello-world-extension": "0.0.1",
+    "@prodaric/examples": "0.0.1",
     "@prodaric/shell": "0.0.1",
     "@prodaric/theia-l10n-es": "0.0.1",
     "@theia/core": "^1.50.0",

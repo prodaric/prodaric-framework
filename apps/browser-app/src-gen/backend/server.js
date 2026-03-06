@@ -1,6 +1,11 @@
 // @ts-check
 require('reflect-metadata');
 
+// Patch electron version if missing, see https://github.com/eclipse-theia/theia/pull/7361#pullrequestreview-377065146
+if (typeof process.versions.electron === 'undefined' && typeof process.env.THEIA_ELECTRON_VERSION === 'string') {
+    process.versions.electron = process.env.THEIA_ELECTRON_VERSION;
+}
+
 // Erase the ELECTRON_RUN_AS_NODE variable from the environment, else Electron apps started using Theia will pick it up.
 if ('ELECTRON_RUN_AS_NODE' in process.env) {
     delete process.env.ELECTRON_RUN_AS_NODE;
@@ -50,8 +55,12 @@ async function start(port, host, argv = process.argv) {
 module.exports = async (port, host, argv) => {
     try {
         await load(require('@theia/core/lib/node/i18n/i18n-backend-module'));
-        await load(require('@theia/core/lib/node/hosting/backend-hosting-module'));
-        await load(require('@theia/core/lib/node/request/backend-request-module'));
+        await load(require('@theia/core/lib/electron-node/window/electron-window-module'));
+        await load(require('@theia/core/lib/electron-node/cli/electron-backend-cli-module'));
+        await load(require('@theia/core/lib/electron-node/keyboard/electron-backend-keyboard-module'));
+        await load(require('@theia/core/lib/electron-node/token/electron-token-backend-module'));
+        await load(require('@theia/core/lib/electron-node/hosting/electron-backend-hosting-module'));
+        await load(require('@theia/core/lib/electron-node/request/electron-backend-request-module'));
         await load(require('@prodaric/theia-l10n-es/lib/node/prodaric-l10n-backend-module.js'));
         await load(require('@theia/editor/lib/node/editor-backend-module'));
         await load(require('@theia/filesystem/lib/node/filesystem-backend-module'));

@@ -1,6 +1,6 @@
 # Prodaric Framework — Arquitectura y TODO list de estimación
 
-**Fuente de verdad:** [docs/ARQUITECTURA.md](./docs/ARQUITECTURA.md) (derivado de *prodaric-framework-arquitectura.xml*).  
+**Fuente de verdad:** [ARQUITECTURA.md](./ARQUITECTURA.md) (derivado de *prodaric-framework-arquitectura.xml*).  
 Este archivo es la **TODO list para estimar** tiempos de construcción o refactorización.
 
 ---
@@ -62,7 +62,7 @@ Este archivo es la **TODO list para estimar** tiempos de construcción o refacto
 | A12 | App IDE: ensamblar shell + layout + plugins | apps/ide | Alta | — h | pendiente | |
 | A13 | Persistencia layout (backend o localStorage, stateless) | shell | Media | — h | pendiente | |
 | A14 | Tests unitarios por paquete (Jest) | todos | Media | — h | hecho | layout; resto pendiente |
-| E2 | BIRT (reportes): report on demand, demos, report-templates | scripts + hello-world-extension | Alta | — h | hecho | ReportRunner one-shot, servidor Node 8082, 3 demos |
+| E2 | BIRT (reportes): report on demand, demos, report-templates | scripts + examples | Alta | — h | hecho | ReportRunner one-shot, servidor Node 8082, 3 demos |
 
 ---
 
@@ -84,4 +84,4 @@ Este archivo es la **TODO list para estimar** tiempos de construcción o refacto
 
 ---
 
-*Arquitectura: [docs/ARQUITECTURA.md](./docs/ARQUITECTURA.md). Origen: prodaric-framework-arquitectura.xml. Prodaric Framework · prodaric-framework.*
+*Arquitectura: [ARQUITECTURA.md](./ARQUITECTURA.md). Origen: prodaric-framework-arquitectura.xml. Prodaric Framework · prodaric-framework.*
