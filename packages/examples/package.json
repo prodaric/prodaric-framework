@@ -1,0 +1,49 @@
+{
+  "name": "@prodaric/examples",
+  "version": "0.0.1",
+  "description": "Prodaric Framework — todos los ejemplos (Dashboard, Reportes, Formularios, CRUD, Gráficos, Docking, Rete.js, JSON Schema, Shoelace, FAST, Vaadin)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prodaric/examples.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "files": [
+    "lib",
+    "README.md"
+  ],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "theiaExtensions": [
+    {
+      "frontend": "lib/browser/examples-frontend-module.js"
+    }
+  ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf lib"
+  },
+  "dependencies": {
+    "@microsoft/fast-components": "^2.30.6",
+    "@microsoft/fast-foundation": "^2.30.6",
+    "@prodaric/layout": "0.0.1",
+    "@prodaric/node-canvas": "0.0.1",
+    "@prodaric/shell": "0.0.1",
+    "@prodaric/ui-engine": "0.0.1",
+    "@shoelace-style/shoelace": "^2.20.1",
+    "@theia/core": "^1.50.0",
+    "@vaadin/button": "^24.7.0",
+    "@vaadin/card": "^24.7.0",
+    "@vaadin/checkbox": "^24.7.0",
+    "@vaadin/dialog": "^24.7.0",
+    "@vaadin/grid": "^24.7.0",
+    "@vaadin/text-field": "^24.7.0",
+    "ajv": "^8.12.0",
+    "echarts": "^5.5.0"
+  },
+  "devDependencies": {
+    "rimraf": "^5.0.0",
+    "typescript": "~5.4.0"
+  }
+}
