@@ -1,4 +1,4 @@
-# Tests en push/PR. Requiere PRODARIC_NPM_TOKEN para instalar @prodaric/*.
+# Tests en push/PR.
 
 name: Testing
 

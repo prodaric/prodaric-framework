@@ -1,5 +1,4 @@
 # Publica @prodaric/examples en GitHub Packages (npm).
-# Requiere secret PRODARIC_NPM_TOKEN (PAT con read:packages + write:packages) para instalar @prodaric/*.
 
 name: Publish to GitHub Packages
 
