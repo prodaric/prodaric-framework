@@ -24,7 +24,8 @@
     "package:electron:rpm": "(chmod +x node_modules/7zip-bin/linux/x64/7za 2>/dev/null || true) && npm run rebuild:electron && npm install && npm run build:electron:prod && electron-builder --dir --publish never && bash scripts/build-rpm.sh",
     "package:electron:tar": "(chmod +x node_modules/7zip-bin/linux/x64/7za 2>/dev/null || true) && npm run rebuild:electron && npm run build:electron:prod && electron-builder --linux tar.gz --publish never",
     "package:electron:rpm:spec": "npm run package:electron:dir && bash scripts/build-rpm.sh",
-    "package:electron:linux": "npm run package:electron:dir && bash scripts/build-rpm.sh && electron-builder --linux deb appimage --publish never"
+    "package:electron:linux": "npm run package:electron:dir && bash scripts/build-rpm.sh && electron-builder --linux deb appimage --publish never",
+    "package:electron:win": "npm run rebuild:electron && npm run build:electron:prod && electron-builder --win nsis --publish never"
   },
   "dependencies": {
     "@prodaric/examples": "0.0.1",

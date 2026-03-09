@@ -148,7 +148,7 @@ El RPM se genera en **`apps/browser-app/rpmbuild/RPMS/x86_64/prodaric-<version>-
 
 Desde `apps/browser-app` (o con `-w @prodaric/browser-app` desde la raíz):
 
-- **Windows (NSIS):** `npm run package:electron` — artefactos en `dist/`.
+- **Windows (NSIS):** `npm run package:electron:win` (desde raíz o desde `apps/browser-app`) — artefactos en `dist/`. Debe ejecutarse en Windows; ver [docs/PACKAGING-WIN.md](docs/PACKAGING-WIN.md).
 - **Solo directorio desempaquetado (Linux):** `npm run package:electron:dir` — queda `dist/linux-unpacked/` (útil para pruebas o para alimentar el build RPM).
 - **Tarball Linux:** `npm run package:electron:tar` — genera `dist/Prodaric-*.tar.gz`.
 

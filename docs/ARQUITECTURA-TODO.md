@@ -59,8 +59,8 @@ Este archivo es la **TODO list para estimar** tiempos de construcción o refacto
 | A8 | (Eliminado) Clientes REST Coderic — paquete api-client eliminado. | — | — | — | eliminado | |
 | A9 | (Eliminado) Cliente JSON-RPC Dicon — paquete api-client eliminado. | — | — | — | eliminado | |
 | (Plugins .cloud, .net, .com, .dev) | Eliminados en Prodaric; no aplican. | — | — | — | — | |
-| A12 | App IDE: ensamblar shell + layout + plugins | apps/ide | Alta | — h | pendiente | |
-| A13 | Persistencia layout (backend o localStorage, stateless) | shell | Media | — h | pendiente | |
+| A12 | App IDE: ensamblar shell + layout + plugins | apps/ide | Alta | — h | hecho | |
+| A13 | Persistencia layout (backend o localStorage, stateless) | apps/ide + doc | Media | — h | hecho | Helper localStorage + [LAYOUT-PERSISTENCE.md](./LAYOUT-PERSISTENCE.md) |
 | A14 | Tests unitarios por paquete (Jest) | todos | Media | — h | hecho | layout; resto pendiente |
 | E2 | BIRT (reportes): report on demand, demos, report-templates | scripts + examples | Alta | — h | hecho | ReportRunner one-shot, servidor Node 8082, 3 demos |
 

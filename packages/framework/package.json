@@ -1,0 +1,21 @@
+{
+  "name": "@prodaric/framework",
+  "version": "1.0.0",
+  "description": "Prodaric Framework — base común para aplicaciones cliente (ERP, CRM, POS, Accounting, HRM)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prodaric/prodaric-framework.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "files": [
+    "README.md"
+  ],
+  "dependencies": {
+    "@prodaric/shell": "^0.0.1",
+    "@prodaric/theia-l10n-es": "^0.0.1",
+    "@prodaric/layout": "^0.0.1",
+    "@prodaric/ui-engine": "^0.0.1"
+  }
+}

@@ -12,9 +12,9 @@ Orden sugerido para ir cerrando pendientes. Al terminar una, márcala `[x]` y pa
 | # | ID   | Tarea | Dónde | Prioridad |
 |---|------|--------|--------|-----------|
 | 1 | A7   | Widget Rete.js v2 envuelto en Lumino | `packages/node-canvas` | hecho |
-| 2 | A12  | App IDE: ensamblar shell + layout + plugins | `apps/ide` | Alta |
-| 3 | A13  | Persistencia layout (backend o localStorage) | `shell` | Media |
-| 4 | I3.4 | Instalador Windows (NSIS); resto Electron/RPM hecho | `apps/browser-app` | Alta |
+| 2 | A12  | App IDE: ensamblar shell + layout + plugins | `apps/ide` | hecho |
+| 3 | A13  | Persistencia layout (backend o localStorage) | `shell` | hecho |
+| 4 | I3.4 | Instalador Windows (NSIS); resto Electron/RPM hecho | `apps/browser-app` | hecho |
 | 5 | E1   | Integrar Apache ECharts (gráficos) | `ui-engine` o `@prodaric/charts` | — |
 | 6 | E3–E5 | NestJS/Drizzle, Sparkplug, Theia AI | varios | — |
 
@@ -63,8 +63,8 @@ Orden sugerido para ir cerrando pendientes. Al terminar una, márcala `[x]` y pa
 - [x] **A9** (Eliminado) Cliente JSON-RPC Dicon — paquete `api-client` eliminado.
 
 ### Ensamblado y persistencia
-- [ ] **A12** App IDE: ensamblar shell + layout + plugins — `apps/ide` — Alta — pendiente
-- [ ] **A13** Persistencia layout (backend o localStorage, stateless) — `shell` — Media — pendiente
+- [x] **A12** App IDE: ensamblar shell + layout + plugins — `apps/ide` — Alta — hecho
+- [x] **A13** Persistencia layout (backend o localStorage, stateless) — helper en `apps/ide` + doc [LAYOUT-PERSISTENCE.md](./LAYOUT-PERSISTENCE.md); contrato para shell cuando lo soporte — Media — hecho
 
 ### Calidad
 - [x] **A14** Tests unitarios por paquete (Jest) — todos — Media — hecho (layout; resto pendiente)
@@ -115,7 +115,7 @@ Objetivo: que el framework sea instalable como aplicación de escritorio y en la
 - [x] **I3.1** Target Electron en browser-app: `@theia/electron`, config Theia `target: electron` — apps/browser-app — Alta — hecho
 - [x] **I3.2** Scripts de build para Electron (rebuild:electron, build producción) — apps/browser-app — Alta — hecho
 - [x] **I3.3** electron-builder: producto "Prodaric Framework", iconos — apps/browser-app — Alta — hecho
-- [ ] **I3.4** Instalador Windows (NSIS, .exe) — apps/browser-app — Alta — pendiente
+- [x] **I3.4** Instalador Windows (NSIS, .exe) — apps/browser-app — Alta — hecho (script `package:electron:win`, doc [PACKAGING-WIN.md](./PACKAGING-WIN.md))
 - [x] **I3.5** Artefacto Linux (AppImage, .deb, .rpm Fedora) — apps/browser-app — Alta — hecho
 - [x] **I3.6** Documentar: cómo generar instaladores por plataforma — docs / README — Media — hecho
 

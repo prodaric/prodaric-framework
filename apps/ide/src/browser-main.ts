@@ -1,16 +1,26 @@
 /**
  * Entrada del IDE en el navegador (build Vite).
  * Pestañas: API, Lumino CRUD, Rete.js Modelo.
+ * Persistencia: tab activo en localStorage (prodaric:layout:ide-tab).
  */
 
 import { APP_ID, runHealthCheck } from "./index";
 import { mountCrudDemo } from "@prodaric/layout";
 import { mountModelEditorDemo } from "@prodaric/node-canvas";
+import { restoreLayoutState, saveLayoutState } from "./layout-persistence";
 
 const app = document.getElementById("app");
 if (!app) throw new Error("#app no encontrado");
 
+const LAYOUT_SCOPE_TAB = "ide-tab";
+
 type TabId = "api" | "lumino" | "rete";
+
+function getInitialTab(): TabId {
+  const saved = restoreLayoutState<string>(LAYOUT_SCOPE_TAB);
+  if (saved === "api" || saved === "lumino" || saved === "rete") return saved;
+  return "api";
+}
 
 let unmountLumino: (() => void) | null = null;
 let unmountRete: (() => void) | null = null;
@@ -52,6 +62,8 @@ async function showTab(tabId: TabId): Promise<void> {
   const content = document.getElementById("tab-content");
   const tabs = document.querySelectorAll("[data-tab]");
   if (!content) return;
+
+  saveLayoutState(LAYOUT_SCOPE_TAB, tabId);
 
   tabs.forEach((t) => t.classList.toggle("active", t.getAttribute("data-tab") === tabId));
 
@@ -99,4 +111,4 @@ document.querySelectorAll("[data-tab]").forEach((btn) => {
   });
 });
 
-void showTab("api");
+void showTab(getInitialTab());
